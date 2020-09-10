@@ -1,3 +1,29 @@
 * {
     font-family: 'Kufam', cursive;
+    padding: 0;
+    margin: 0;
+}
+
+.container-fluid {
+    padding: 0;
+    margin: 0;
+}
+
+.primary-btn {
+    background-color: #2B52BA;
+    color: #fff !important;
+    padding: 8px 11px;
+
+    &:hover {
+        background-color: #446bd8;
+    }
+}
+
+.small-btn {
+    font-size: 13px;
+    font-weight: 400;
+
+    svg {
+        margin-right: 3px;
+    }
 }

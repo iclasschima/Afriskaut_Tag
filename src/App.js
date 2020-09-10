@@ -1,10 +1,32 @@
-import React  from 'react';
+import React from "react";
+import Loadable from "react-loadable";
+import Loader from "./helpers/Loader"
+import { Switch, Route, BrowserRouter } from "react-router-dom";
+
+import Header from "./components/Global/Header"
+
+
+const SecuredRoutes = Loadable({
+  loader: () => import("./securedRoutes"),
+  loading: Loader,
+  delay: 100
+})
+
+const Login = Loadable({
+  loader: () => import("./components/Auth/Login"),
+  loading: Loader,
+  delay: 100
+})
 
 function App() {
   return (
-    <div className="App">
-     <p>Hello world</p>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Switch>
+        <Route path="/" component={SecuredRoutes} />
+        <Route path="/login" exact component={Login} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 

@@ -1,0 +1,30 @@
+.card {
+    padding: 10px 12px;
+    box-shadow: 1px 1px #eee;
+    scale: .9;
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: 3px 4px #eee;
+    }
+
+    .card-title {
+        font-size: 12px;
+        margin-bottom: 1rem;
+    }
+
+    .card-body {
+        padding: 3px 0;
+
+        .club-name,
+        .time,
+        .stadium {
+            font-size: 14px;
+            margin: 0 0 5px 0;
+        }
+
+        .card-subtitle {
+            font-size: 12px;
+        }
+    }
+}
