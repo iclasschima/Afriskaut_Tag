@@ -7,7 +7,7 @@ import Header from "./components/Global/Header"
 
 
 const SecuredRoutes = Loadable({
-  loader: () => import("./securedRoutes"),
+  loader: () => import("./SecuredRoutes"),
   loading: Loader,
   delay: 100
 })
