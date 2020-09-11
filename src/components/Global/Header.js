@@ -46,6 +46,15 @@ export default function Header() {
                   }`}
                   href="/"
                 >
+                  <span>Leagues</span>
+                </a>
+                <a
+                  onClick={(e) => handleClick(e, "players")}
+                  className={`nav-item nav-link ${
+                    location.pathname === "/players" ? "active" : ""
+                  }`}
+                  href="/"
+                >
                   <span>Players</span>
                 </a>
               </div>

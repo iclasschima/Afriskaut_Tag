@@ -1,5 +1,6 @@
 import React from 'react'
 import Table from "./Table"
+import { BiClipboard } from "react-icons/bi";
 import "../../styles/teams.scss"
 
 export default function Teams() {
@@ -20,7 +21,12 @@ export default function Teams() {
     ];
 
     return (
-        <div className="teams">
+        <div className="teams container-fluid">
+            <div className="row">
+                <div className="col-12 mb-2">
+                     <p className="header"> <BiClipboard /> Teams</p>
+                </div>
+            </div>
             <Table teams={teams} />
         </div>
     )

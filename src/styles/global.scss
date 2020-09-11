@@ -1,5 +1,5 @@
 * {
-    font-family: 'Kufam', cursive;
+    font-family: 'Kufam', cursive !important;
     padding: 0;
     margin: 0;
 }
@@ -17,6 +17,13 @@
     &:hover {
         background-color: #446bd8;
     }
+
+    &.form-control {
+        height: 2.8rem;
+        font-size: 13px;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
 }
 
 .small-btn {
@@ -26,4 +33,17 @@
     svg {
         margin-right: 7px;
     }
+}
+
+.header {
+    margin: 0;
+    font-size: 14px;
+}
+
+.MuiTextField-root {
+    margin-bottom: 1.5rem !important;
+}
+
+input {
+    height: 1.7rem !important;
 }

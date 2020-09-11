@@ -5,14 +5,14 @@ export default function Card() {
     return (
       <div className="card">
         <div className="card-body">
-          <p className="card-title">English Premier League</p>
+          <p className="card-title">Nigeria Football Premier League</p>
           <div>
-            <p className="club-name">Chelsea FC</p>
+            <p className="club-name">Eyimba FC</p>
             <p className="card-subtitle mb-2 text-muted">Home</p>
           </div>
 
           <div>
-            <p className="club-name">Liverpool FC</p>
+            <p className="club-name">Kano Pillars FC</p>
             <p className="card-subtitle mb-2 text-muted">Away</p>
           </div>
 
@@ -24,7 +24,7 @@ export default function Card() {
           </div>
 
           <div>
-            <p className="stadium"> Stamford Bridge</p>
+            <p className="stadium"> Eyimba Stadium, Aba</p>
             <p className="card-subtitle mb-2 text-muted">Stadium</p>
           </div>
         </div>
