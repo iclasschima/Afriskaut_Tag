@@ -1,11 +1,16 @@
 import React from 'react'
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import "../../styles/header.scss"
 
 export default function Header() {
 
-
+  const history = useHistory()
   const location = useLocation()
+
+  const handleClick = (e, page) => {
+    e.preventDefault()
+    history.push(`/${page}`)
+  }
 
     return (
       <div className="container-fluid nav-container">
@@ -17,6 +22,7 @@ export default function Header() {
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div className="navbar-nav ml-auto">
                 <a
+                  onClick={(e) => handleClick(e, "")}
                   className={`nav-item nav-link ${
                     location.pathname === "/" ? "active" : ""
                   }`}
@@ -25,6 +31,7 @@ export default function Header() {
                   <span>Home</span>
                 </a>
                 <a
+                  onClick={(e) => handleClick(e, "teams")}
                   className={`nav-item nav-link ${
                     location.pathname === "/teams" ? "active" : ""
                   }`}
@@ -33,6 +40,16 @@ export default function Header() {
                   <span>Teams</span>
                 </a>
                 <a
+                  onClick={(e) => handleClick(e, "players")}
+                  className={`nav-item nav-link ${
+                    location.pathname === "/players" ? "active" : ""
+                  }`}
+                  href="/"
+                >
+                  <span>Leagues</span>
+                </a>
+                <a
+                  onClick={(e) => handleClick(e, "players")}
                   className={`nav-item nav-link ${
                     location.pathname === "/players" ? "active" : ""
                   }`}

@@ -2,6 +2,10 @@
     width: 70%;
     margin: 0 auto;
     padding-top: 1rem;
+    min-height: 90vh !important;
+    height: 100%;
+    position: relative;
+    padding-bottom: 4rem;
 
     .breadcrumb {
         background-color: #fff;
