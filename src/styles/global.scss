@@ -1,5 +1,5 @@
 * {
-    font-family: 'Kufam', cursive !important;
+    font-family: 'Kufam', cursive;
     padding: 0;
     margin: 0;
 }
@@ -10,7 +10,7 @@
 }
 
 .primary-btn {
-    background-color: #2B52BA;
+    background-color: #2B52BA !important;
     color: #fff !important;
     padding: 8px 11px;
 
@@ -19,7 +19,7 @@
     }
 
     &.form-control {
-        height: 2.8rem;
+        height: 3rem;
         font-size: 13px;
         font-weight: 500;
         text-transform: uppercase;
@@ -38,12 +38,30 @@
 .header {
     margin: 0;
     font-size: 14px;
+
+    svg {
+        margin-right: 3px;
+    }
 }
 
-.MuiTextField-root {
-    margin-bottom: 1.5rem !important;
-}
+form {
 
-input {
-    height: 1.7rem !important;
+    input {
+        font-size: 14px !important;
+    }
+
+    label {
+        font-size: 12.5px !important;
+        font-family: 'Kufam',
+            cursive !important;
+    }
+
+    .MuiInputLabel-outlined.MuiInputLabel-shrink {
+        transform: translate(18px, -6px) scale(0.75);
+    }
+
+    .MuiOutlinedInput-inputMarginDense {
+ font-family: 'Kufam',
+ cursive !important;
+    }
 }

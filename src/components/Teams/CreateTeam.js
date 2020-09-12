@@ -1,9 +1,18 @@
 import React from 'react'
+import { useHistory } from "react-router-dom"
 import "../../styles/create-team.scss"
 import { BiClipboard } from "react-icons/bi";
 import TextField from "@material-ui/core/TextField";
 
 export default function CreateTeam() {
+
+  const history = useHistory()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    history.push("/add-players")
+  }
+  
     return (
       <div className="create-team container-fluid">
         <div className="row">
@@ -40,7 +49,7 @@ export default function CreateTeam() {
                 size="small"
                 variant="outlined"
               />
-              <button className="btn primary-btn form-control">
+              <button className="btn primary-btn form-control" onClick={handleSubmit}>
                 Create Team
               </button>
             </form>

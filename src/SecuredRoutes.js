@@ -25,6 +25,12 @@ const CreateTeam = Loadable({
   delay: 100,
 });
 
+const AddPlayers = Loadable({
+  loader: () => import("./components/Teams/AddPlayers"),
+  loading: Loader,
+  delay: 100
+})
+
 export default function SecuredRoutes() {
   return (
     <div className="main-container container-fluid">
@@ -49,6 +55,7 @@ export default function SecuredRoutes() {
         <Route path="/" exact component={Home} />
         <Route path="/teams" exact component={Teams} />
         <Route path="/create-team" exact component={CreateTeam} />
+        <Route path="/add-players" exact component={AddPlayers} />
       </Switch>
       <Footer />
     </div>
