@@ -34,12 +34,13 @@ export default function Table({ teams }) {
      rows: teams.map((data, index) => {
        return {
          serial_number: index + 1,
-         name: <a href="/">{data.club_name}</a>,
+         name: data.club_name,
          league: data.league,
          country: data.country,
+         clickEvent: () => console.log("Hello"),
        };
      }),
    };
 
-   return <MDBDataTable data={data} />;
+   return <MDBDataTable hover data={data} />;
 }

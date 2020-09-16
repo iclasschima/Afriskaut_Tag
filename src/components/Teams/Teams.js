@@ -6,17 +6,17 @@ import "../../styles/teams.scss"
 export default function Teams() {
 
     const teams = [
-      { club_name: "Eyimba FC", league: "NFPL", country: "Nigeria" },
-      { club_name: "Kano pillars FC", league: "NFPL", country: "Nigeria" },
+      { club_name: "Eyimba FC", league: "NPFL", country: "Nigeria" },
+      { club_name: "Kano pillars FC", league: "NPFL", country: "Nigeria" },
       { club_name: "Accra Hearts FC", league: "GFPL", country: "Ghana" },
-      { club_name: "Eyimba FC", league: "NFPL", country: "Nigeria" },
-      { club_name: "Kano pillars FC", league: "NFPL", country: "Nigeria" },
+      { club_name: "Eyimba FC", league: "NPFL", country: "Nigeria" },
+      { club_name: "Kano pillars FC", league: "NPFL", country: "Nigeria" },
       { club_name: "Accra Hearts FC", league: "GFPL", country: "Ghana" },
-      { club_name: "Eyimba FC", league: "NFPL", country: "Nigeria" },
-      { club_name: "Kano pillars FC", league: "NFPL", country: "Nigeria" },
+      { club_name: "Eyimba FC", league: "NPFL", country: "Nigeria" },
+      { club_name: "Kano pillars FC", league: "NPFL", country: "Nigeria" },
       { club_name: "Accra Hearts FC", league: "GFPL", country: "Ghana" },
-      { club_name: "Eyimba FC", league: "NFPL", country: "Nigeria" },
-      { club_name: "Kano pillars FC", league: "NFPL", country: "Nigeria" },
+      { club_name: "Eyimba FC", league: "NPFL", country: "Nigeria" },
+      { club_name: "Kano pillars FC", league: "NPFL", country: "Nigeria" },
       { club_name: "Accra Hearts FC", league: "GFPL", country: "Ghana" },
     ];
 
@@ -24,7 +24,7 @@ export default function Teams() {
         <div className="teams container-fluid">
             <div className="row">
                 <div className="col-12 mb-2">
-                     <p className="header"> <BiClipboard /> Teams</p>
+                     <p className="header"> <BiClipboard />All Teams</p>
                 </div>
             </div>
             <Table teams={teams} />
