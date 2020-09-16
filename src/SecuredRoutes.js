@@ -13,6 +13,12 @@ const Home = Loadable({
   delay: 100,
 });
 
+const Matches = Loadable({
+  loader: () => import("./components/Matches/Matches"),
+  loading: Loader,
+  delay: 100,
+});
+
 const Teams = Loadable({
   loader: () => import("./components/Teams/Teams"),
   loading: Loader,
@@ -35,19 +41,19 @@ export default function SecuredRoutes() {
   return (
     <div className="main-container container-fluid">
       <div className="row">
-        <nav aria-label="breadcrumb" className="col-7">
+        {/* <nav aria-label="breadcrumb" className="col-7">
           <ol class="breadcrumb">
             <li class="breadcrumb-item" aria-current="page">
               <a href="/">Home</a>
             </li>
-            {/* <li class="breadcrumb-item">
+            <li class="breadcrumb-item">
                 <a href="/">Library</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
                 Data
-              </li> */}
+              </li>
           </ol>
-        </nav>
+        </nav> */}
         <Button />
       </div>
 
@@ -55,8 +61,10 @@ export default function SecuredRoutes() {
         <Route path="/" exact component={Home} />
         <Route path="/teams" exact component={Teams} />
         <Route path="/create-team" exact component={CreateTeam} />
+        <Route path="/matches" exact component={Matches} />
         <Route path="/add-players" exact component={AddPlayers} />
       </Switch>
+
       <Footer />
     </div>
   );
@@ -74,7 +82,7 @@ const Button = () => {
   return (
     <div className="ml-auto pr-2">
       <button className="btn btn-sm primary-btn small-btn">
-        {location.pathname === "/" ? (
+        {location.pathname === "/matches" ? (
           <div onClick={(e) => handleClick(e, "create-match")}>
             <BiFootball /> Add New Match
           </div>

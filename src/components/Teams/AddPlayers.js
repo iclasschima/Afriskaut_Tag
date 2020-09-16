@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { RiTShirt2Line } from "react-icons/ri";
 import TextField from "@material-ui/core/TextField";
 import "../../styles/add-players.scss";
@@ -17,13 +17,12 @@ export default function AddPlayers() {
   };
 
   const handleAddField = (e) => {
-    e.preventDefault()
-    setfields([...fields,  { player_name: "", age: "", position: "", number: "" }])
-  }
-
-  useEffect(() => {
-    console.log(fields);
-  }, [fields]);
+    e.preventDefault();
+    setfields([
+      ...fields,
+      { player_name: "", age: "", position: "", number: "" },
+    ]);
+  };
 
   return (
     <div className="container-fluid add-players">
@@ -50,7 +49,10 @@ export default function AddPlayers() {
                 </button>
               </div>
               <div className="col-3 pl-0">
-                <button className="btn form-control primary-btn" onClick={handleAddField}>
+                <button
+                  className="btn form-control primary-btn"
+                  onClick={handleAddField}
+                >
                   Add New Player
                 </button>
               </div>
