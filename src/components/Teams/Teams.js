@@ -2,28 +2,14 @@ import React from 'react'
 import Table from "./Table"
 import { BiClipboard } from "react-icons/bi";
 import "../../styles/teams.scss"
+import teams from "../../helpers/teams"
 
 export default function Teams() {
-
-    const teams = [
-      { club_name: "Eyimba FC", league: "NPFL", country: "Nigeria" },
-      { club_name: "Kano pillars FC", league: "NPFL", country: "Nigeria" },
-      { club_name: "Accra Hearts FC", league: "GFPL", country: "Ghana" },
-      { club_name: "Eyimba FC", league: "NPFL", country: "Nigeria" },
-      { club_name: "Kano pillars FC", league: "NPFL", country: "Nigeria" },
-      { club_name: "Accra Hearts FC", league: "GFPL", country: "Ghana" },
-      { club_name: "Eyimba FC", league: "NPFL", country: "Nigeria" },
-      { club_name: "Kano pillars FC", league: "NPFL", country: "Nigeria" },
-      { club_name: "Accra Hearts FC", league: "GFPL", country: "Ghana" },
-      { club_name: "Eyimba FC", league: "NPFL", country: "Nigeria" },
-      { club_name: "Kano pillars FC", league: "NPFL", country: "Nigeria" },
-      { club_name: "Accra Hearts FC", league: "GFPL", country: "Ghana" },
-    ];
 
     return (
         <div className="teams container-fluid">
             <div className="row">
-                <div className="col-12 mb-2">
+                <div className="col-12 mb-3">
                      <p className="header"> <BiClipboard />All Teams</p>
                 </div>
             </div>

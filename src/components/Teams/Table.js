@@ -11,7 +11,7 @@ export default function Table({ teams }) {
         sort: "asc",
       },
       {
-        label: "Club Name",
+        label: "Team Name",
         field: "name",
         width: 150,
         sort: "asc",
@@ -28,14 +28,21 @@ export default function Table({ teams }) {
         width: 150,
         sort: "asc",
       },
+      {
+        label: "No. of Players",
+        field: "players",
+        width: 150,
+        sort: "asc",
+      },
     ],
 
     rows: teams.map((data, index) => {
       return {
         serial_number: index + 1,
-        name: data.club_name,
+        name: data.team_name,
         league: data.league,
         country: data.country,
+        players: data.players,
         clickEvent: () => console.log("Hello"),
       };
     }),
