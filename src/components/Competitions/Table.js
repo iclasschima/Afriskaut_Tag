@@ -11,13 +11,13 @@ export default function Table({ teams }) {
         sort: "asc",
       },
       {
-        label: "Club Name",
+        label: "Competition Name",
         field: "name",
         width: 150,
         sort: "asc",
       },
       {
-        label: "League",
+        label: "Abbreviation",
         field: "league",
         width: 150,
         sort: "asc",
@@ -28,14 +28,29 @@ export default function Table({ teams }) {
         width: 150,
         sort: "asc",
       },
+
+      {
+        label: "Season",
+        field: "season",
+        width: 150,
+        sort: "asc",
+      },
+      {
+        label: "No. of Teams",
+        field: "teams",
+        width: 150,
+        sort: "asc",
+      },
     ],
 
     rows: teams.map((data, index) => {
       return {
         serial_number: index + 1,
         name: data.club_name,
-        league: data.league,
+        league: data.abbrev,
         country: data.country,
+        teams: data.teams,
+        season: data.season,
         clickEvent: () => console.log("Hello"),
       };
     }),

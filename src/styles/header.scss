@@ -24,7 +24,11 @@
             a {
                 margin: 0 14px;
                 padding: 3px;
-                width: 4rem;
+                min-width: 4rem;
+                &.competitions {
+                    min-width: 6rem;
+                    padding: 3px;
+                }
                 &:hover, &.active {
                     transform: scale(1.1);
                     transition: all .3s ease-in-out;
