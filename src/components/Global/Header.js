@@ -52,15 +52,17 @@ export default function Header() {
               >
                 <span>Teams</span>
               </a>
+
               <a
-                onClick={(e) => handleClick(e, "leagues")}
-                className={`nav-item nav-link ${
-                  location.pathname === "/leagues" ? "active" : ""
+                onClick={(e) => handleClick(e, "competitions")}
+                className={`nav-item nav-link competitions ${
+                  location.pathname === "/competitions" ? "active" : ""
                 }`}
                 href="/"
               >
-                <span>Leagues</span>
+                <span>Competitions</span>
               </a>
+
               <a
                 onClick={(e) => handleClick(e, "players")}
                 className={`nav-item nav-link ${

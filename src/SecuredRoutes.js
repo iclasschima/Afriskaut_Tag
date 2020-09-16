@@ -37,6 +37,12 @@ const AddPlayers = Loadable({
   delay: 100
 })
 
+const Competitions = Loadable({
+  loader: () => import("./components/Competitions/Competitions"),
+  loading: Loader,
+  delay: 100,
+});
+
 export default function SecuredRoutes() {
   return (
     <div className="main-container container-fluid">
@@ -63,6 +69,7 @@ export default function SecuredRoutes() {
         <Route path="/create-team" exact component={CreateTeam} />
         <Route path="/matches" exact component={Matches} />
         <Route path="/add-players" exact component={AddPlayers} />
+        <Route path="/competitions" exact component={Competitions} />
       </Switch>
 
       <Footer />
