@@ -1,6 +1,7 @@
 import React from "react";
 // import Card from "./Card";
 import "../../styles/matches.scss";
+import moment from "moment";
 // import { BiFootball } from "react-icons/bi";
 // import matches from "../../helpers/matches"
 
@@ -11,7 +12,7 @@ export default function Home() {
       <div className="row">
         <div className="col-12">
           <p className="header">
-            September 13, 2020
+            {moment().format("MMMM D, YYYY")}.
           </p>
         </div>
       </div>
