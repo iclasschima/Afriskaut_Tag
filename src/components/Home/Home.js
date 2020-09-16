@@ -1,8 +1,8 @@
 import React from "react";
-import Card from "./Card";
+// import Card from "./Card";
 import "../../styles/matches.scss";
-import { BiFootball } from "react-icons/bi";
-import matches from "../../helpers/matches"
+// import { BiFootball } from "react-icons/bi";
+// import matches from "../../helpers/matches"
 
 export default function Home() {
 
