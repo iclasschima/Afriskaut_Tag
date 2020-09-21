@@ -27,7 +27,7 @@ export default function Header() {
                 }`}
                 href="/"
               >
-                <span>Home</span>
+                <span>Dashboard</span>
               </a>
 
               <a

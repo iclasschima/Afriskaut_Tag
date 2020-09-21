@@ -24,32 +24,48 @@ export default function CreateTeam() {
         </div>
         <div className="row mt-5 justify-content-center">
           <div className="col-5">
-            <form>
-              <TextField
-                label="Club Name"
-                fullWidth
-                size="small"
-                variant="outlined"
-              />
-              <TextField
-                label="Country"
-                fullWidth
-                size="small"
-                variant="outlined"
-              />
-              <TextField
-                label="League Name"
-                fullWidth
-                size="small"
-                variant="outlined"
-              />
-              <TextField
-                label="Season"
-                fullWidth
-                size="small"
-                variant="outlined"
-              />
-              <button className="btn primary-btn form-control" onClick={handleSubmit}>
+            <form autoComplete="off">
+              <div className="form-group">
+                <label>Club Name</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  name="name"
+                  placeholder="Enymiba Football Club"
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Country</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  name="name"
+                  placeholder="Nigeria"
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Season</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  name="name"
+                  placeholder="2020/2021"
+                />
+              </div>
+              <div className="form-group">
+                <label>Club Image</label>
+                <input
+                  className="form-control"
+                  type="file"
+                  name="name"
+                />
+              </div>
+              <button
+                className="btn primary-btn form-control mt-2"
+                onClick={handleSubmit}
+              >
                 Create Team
               </button>
             </form>
