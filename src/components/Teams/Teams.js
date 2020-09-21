@@ -1,6 +1,5 @@
 import React from 'react'
 import Table from "./Table"
-import { useLocation } from "react-router-dom"
 import { Helmet } from "react-helmet";
 import { BiClipboard } from "react-icons/bi";
 import "../../styles/teams.scss"

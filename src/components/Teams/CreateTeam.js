@@ -2,7 +2,6 @@ import React from 'react'
 import { useHistory } from "react-router-dom"
 import "../../styles/create-team.scss"
 import { BiClipboard } from "react-icons/bi";
-import TextField from "@material-ui/core/TextField";
 
 export default function CreateTeam() {
 

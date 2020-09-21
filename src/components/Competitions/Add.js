@@ -2,7 +2,6 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import "../../styles/create-team.scss";
 import { RiTrophyLine } from "react-icons/ri";
-import TextField from "@material-ui/core/TextField";
 
 export default function CreateTeam() {
   const history = useHistory();
