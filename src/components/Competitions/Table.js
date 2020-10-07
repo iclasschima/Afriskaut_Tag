@@ -46,7 +46,7 @@ export default function Table({ teams }) {
     rows: teams.map((data, index) => {
       return {
         serial_number: index + 1,
-        name: data.club_name,
+        name: data.competition_name,
         league: data.abbrev,
         country: data.country,
         teams: data.teams,

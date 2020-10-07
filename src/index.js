@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import "./styles/global.scss"
-
 toast.configure();
 
 ReactDOM.render(

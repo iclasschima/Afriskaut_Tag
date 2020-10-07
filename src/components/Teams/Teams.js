@@ -1,7 +1,6 @@
 import React from 'react'
 import Table from "./Table"
 import { Helmet } from "react-helmet";
-import { BiClipboard } from "react-icons/bi";
 import "../../styles/teams.scss"
 import teams from "../../helpers/teams"
 
@@ -28,8 +27,7 @@ export default function Teams() {
         <div className="row">
           <div className="col-12 mb-3">
             <p className="header">
-              {" "}
-              <BiClipboard />
+              <i className="mdi mdi-vlc mr-2"></i>
               All Teams
             </p>
           </div>

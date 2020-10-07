@@ -2,7 +2,6 @@ import React from "react";
 import Card from "./Card";
 import PlayedCard from "./PlayedCard";
 import "../../styles/matches.scss";
-import { BiFootball } from "react-icons/bi";
 import matches from "../../helpers/matches";
 import {GrFormNextLink} from "react-icons/gr"
 
@@ -12,7 +11,7 @@ export default function Matches() {
       <div className="row">
         <div className="col-12">
           <p className="header">
-            <BiFootball /> Upcoming Matches
+            <i className="mdi mdi-soccer mr-1"></i> Upcoming Matches
           </p>
         </div>
       </div>
@@ -31,7 +30,7 @@ export default function Matches() {
       <div className="row mt-4">
         <div className="col-12">
           <p className="header">
-            <BiFootball /> Most Recent Matches
+            <i className="mdi mdi-soccer mr-1"></i> Most Recent Matches
           </p>
         </div>
       </div>

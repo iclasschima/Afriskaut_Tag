@@ -1,7 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import "../../styles/create-team.scss";
-import { RiTrophyLine } from "react-icons/ri";
 
 export default function CreateTeam() {
   const history = useHistory();
@@ -16,7 +15,7 @@ export default function CreateTeam() {
       <div className="row">
         <div className="col-12">
           <p className="header">
-            <RiTrophyLine /> Create Competition
+            <i className="mdi mdi-trophy-outline mr-1" /> Create Competition
           </p>
         </div>
       </div>
