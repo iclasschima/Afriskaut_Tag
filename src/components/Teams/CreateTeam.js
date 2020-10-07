@@ -1,7 +1,6 @@
 import React from 'react'
 import { useHistory } from "react-router-dom"
 import "../../styles/create-team.scss"
-import { BiClipboard } from "react-icons/bi";
 
 export default function CreateTeam() {
 
@@ -17,7 +16,7 @@ export default function CreateTeam() {
         <div className="row">
           <div className="col-12">
             <p className="header">
-              <BiClipboard /> Create New Team
+              <i className="mdi mdi-vlc mr-1"></i> Create New Team
             </p>
           </div>
         </div>
@@ -55,11 +54,7 @@ export default function CreateTeam() {
               </div>
               <div className="form-group">
                 <label>Club Image</label>
-                <input
-                  className="form-control"
-                  type="file"
-                  name="name"
-                />
+                <input className="form-control" type="file" name="name" />
               </div>
               <button
                 className="btn primary-btn form-control mt-2"

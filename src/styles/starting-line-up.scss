@@ -1,0 +1,26 @@
+.starting-line-up {
+
+    ul {
+        list-style-type: none;
+        font-size: 12px;
+
+        li {
+            position: relative;
+            margin-bottom: 1em;
+            small {
+                position: absolute;
+                bottom: -18%;
+                left: 25%;
+                color: #2B52BA;
+                text-transform: capitalize;
+            }
+            i {
+               margin-right: 3px;
+            }
+        }
+    }
+
+    button {
+        font-size: 13px;
+    }
+}
