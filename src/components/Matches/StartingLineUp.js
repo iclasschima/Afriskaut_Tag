@@ -25,7 +25,7 @@ export default function StartingLineUp() {
   }, []);
 
   return (
-    <div className="starting-line-up container-fluid">
+    <div className="starting-line-up container-fluid pt-3">
       <div className="row">
         <div className="col-lg-6">
           <p>Select Team lineup for {location?.state.home_team}</p>

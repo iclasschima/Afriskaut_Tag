@@ -1,11 +1,12 @@
 .card {
     padding: 10px 12px;
-    box-shadow: 1px 1px #eee;
+    box-shadow: 0 0 10px 0 rgba(183, 192, 206, .2);
     scale: .9;
 
     &:hover {
         cursor: pointer;
-        box-shadow: 3px 4px #eee;
+        
+        box-shadow: 0 0 10px 0 rgba(183, 192, 206, .2);
     }
 
     .card-title {
@@ -17,7 +18,7 @@
         padding: 3px 0;
 
         .name {
-            font-size: 13px;
+            font-size: 12px;
             margin: 0 0 5px 0;
         }
 
@@ -33,7 +34,7 @@
             position: absolute;
             right: 10%;
             top: 5%;
-            font-size: 13px;
+            font-size: 11px;
         }
     }
 }

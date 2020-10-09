@@ -1,3 +1,25 @@
 .start-match {
+    p {
+        font-size: 14px;
+    }
     
+
+    .timeline {
+        border: 2px solid #eee;
+        height: 25rem;
+       box-shadow: 0 0 3px 0 rgba(183, 192, 206, .2);
+       border-radius: 4px;
+    }
+
+    .players {
+        cursor: pointer !important;
+        &:hover {
+            color: #2B52BA;
+        }
+    }
+
+    .board {
+         border: 2px solid #eee;
+         height: 10rem;
+    }
 }
