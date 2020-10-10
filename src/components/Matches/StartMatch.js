@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState} from 'react'
 import "../../styles/start-match.scss";
 import { useLocation } from "react-router-dom"
 import players from "../../helpers/players";
@@ -78,7 +78,7 @@ export default function StartMatch() {
             <div className="col-lg-7">
               <Timer
                 formatValue={(value) => `${value < 10 ? `0${value}` : value}`}
-                initialTime={0}
+                initialTime={timer}
                 startImmediately={false}
                 checkpoints={[
                   {
@@ -93,9 +93,24 @@ export default function StartMatch() {
                       <i className="mdi mdi-timer-outline mr-2" />
                       <Timer.Minutes /> {": "}
                       <Timer.Seconds />
+                      <span onClick={start} className="btn btn-xs primary-btn">
+                        <i className="mdi mdi-play" />
+                      </span>
+                      <span onClick={() => {
+                        setTimer(getTime())
+                        pause()
+                      }} className="btn btn-xs primary-btn">
+                        <i className="mdi mdi-pause" />
+                      </span>
+                      <span onClick={reset} className="btn btn-xs primary-btn">
+                        <i className="mdi mdi-restart" />
+                      </span>
+                      <span onClick={stop} className="btn btn-xs primary-btn">
+                        <i className="mdi mdi-stop" />
+                      </span>
                     </p>
 
-                    <div>
+                    {/* <div>
                       <button className="btn btn-sm border" onClick={start}>
                       
                         <i className="mdi mdi-play mr-2" />
@@ -111,7 +126,7 @@ export default function StartMatch() {
                         Stop
                       </button>
                       <button onClick={reset}>Reset</button>
-                    </div>
+                    </div> */}
                   </React.Fragment>
                 )}
               </Timer>
@@ -129,6 +144,7 @@ export default function StartMatch() {
                   <i className="mdi mdi-shoe-print mdi-18px mr-2" />
                   Events
                 </p>
+                <div className="events"></div>
               </div>
             </div>
 
