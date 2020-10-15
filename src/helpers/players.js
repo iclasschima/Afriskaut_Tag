@@ -146,9 +146,9 @@ export default [
   {
     id: 19,
     teams: [],
-    name: "Temi Collins",
+    name: "Fred Ernest",
     position: "forward",
-    number: 20,
+    number: 22,
     playerMatchEvents: [],
   },
   {
