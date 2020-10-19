@@ -113,7 +113,7 @@ const Button = () => {
     history.push(`/${path}`);
   };
   return (
-    <div className="ml-auto pr-2">
+    <div className="ml-auto pr-5">
       {location.pathname === "/matches" ? (
         <button
           className="btn btn-sm primary-btn small-btn"

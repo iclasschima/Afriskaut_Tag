@@ -32,7 +32,7 @@ export default function Add() {
         </div>
       </div>
       <div className="row mt-4 justify-content-center">
-        <div className="col-lg-6">
+        <div className="col-lg-4">
           <form>
             <div className="form-group">
               <label>Choose Competition</label>
