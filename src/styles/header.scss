@@ -1,6 +1,6 @@
 .nav-container {
     padding: 0 !important;
-    font-size: 12.6px;
+    font-size: 14px;
 
     &.nav-container {
         background-color: #2B52BA;
@@ -24,17 +24,15 @@
             a {
                 margin: 0 14px;
                 padding: 3px;
-                min-width: 4rem;
+                
                 &.competitions {
                     min-width: 6rem;
                     padding: 3px;
                 }
-                &:hover, &.active {
+                &.active {
                     transform: scale(1.1);
-                    transition: all .3s ease-in-out;
                     font-weight: 500;
-                    overflow: hidden;
-                    justify-content: center;
+                    transition: all .3s ease-in-out;
                 }
             }
 

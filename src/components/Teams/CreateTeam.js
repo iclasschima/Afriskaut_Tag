@@ -20,8 +20,8 @@ export default function CreateTeam() {
             </p>
           </div>
         </div>
-        <div className="row mt-5 justify-content-center">
-          <div className="col-5">
+        <div className="row mt-3 justify-content-center inner-content-wrapper">
+          <div className="col-6">
             <form autoComplete="off">
               <div className="form-group">
                 <label>Club Name</label>
@@ -57,7 +57,7 @@ export default function CreateTeam() {
                 <input className="form-control" type="file" name="name" />
               </div>
               <button
-                className="btn primary-btn form-control mt-2"
+                className="btn primary-btn mt-2"
                 onClick={handleSubmit}
               >
                 Create Team

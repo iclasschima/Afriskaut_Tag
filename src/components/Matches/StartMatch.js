@@ -18,7 +18,8 @@ export default function StartMatch() {
       event: "Pass",
       type: "Short",
       outcome: "Successful",
-      time: "0:01",
+      start_time: "0:01",
+      stop_time: "0:02",
     },
     {
       id: 2,
@@ -26,7 +27,8 @@ export default function StartMatch() {
       event: "Dribble",
       type: "Nutmeg",
       outcome: "Successful",
-      time: "0:04",
+      start_time: "0:04",
+      stop_time: "0:05",
     },
   ];
 
@@ -58,8 +60,13 @@ export default function StartMatch() {
         sort: "asc",
       },
       {
-        label: "Time",
-        field: "time",
+        label: "Start Time",
+        field: "start",
+        sort: "asc",
+      },
+       {
+        label: "Stop Time",
+        field: "stop",
         sort: "asc",
       },
       {
@@ -76,7 +83,8 @@ export default function StartMatch() {
           event: data.event,
           type: data.type,
           outcome: data.outcome,
-          time: data.time,
+          start: data.start_time,
+          stop: data.stop_time,
           action: [
             <i className="mdi mdi-pen text-primary" />,
             <i className="mdi mdi-trash-can text-danger" />,
