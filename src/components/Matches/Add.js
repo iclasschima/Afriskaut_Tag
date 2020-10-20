@@ -31,8 +31,8 @@ export default function Add() {
           </p>
         </div>
       </div>
-      <div className="row mt-4 justify-content-center">
-        <div className="col-lg-4">
+      <div className="row mt-4 justify-content-center inner-content-wrapper">
+        <div className="col-lg-6">
           <form>
             <div className="form-group">
               <label>Choose Competition</label>
@@ -96,12 +96,12 @@ export default function Add() {
             </div>
 
             <button
-              className="btn primary-btn form-control mt-2"
+              className="btn primary-btn mt-2"
               onClick={handleSubmit}
               data-toggle="modal"
               data-target="#add_match"
             >
-              ADD MATCH
+              Add Match
             </button>
           </form>
         </div>

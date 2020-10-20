@@ -1,7 +1,7 @@
 import React from "react";
 import Loadable from "react-loadable";
 import Loader from "./helpers/Loader";
-import { Switch, Route, useLocation, useHistory } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Footer from "./components/Global/Footer";
 import "./styles/container.scss";
 
@@ -70,20 +70,6 @@ export default function SecuredRoutes() {
   return (
     <div className="main-container container-fluid">
       <div className="row">
-        {/* <nav aria-label="breadcrumb" className="col-7">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item" aria-current="page">
-              <a href="/">Home</a>
-            </li>
-            <li class="breadcrumb-item">
-                <a href="/">Library</a>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page">
-                Data
-              </li>
-          </ol>
-        </nav> */}
-        <Button />
       </div>
 
       <Switch>
@@ -103,43 +89,3 @@ export default function SecuredRoutes() {
     </div>
   );
 }
-
-const Button = () => {
-  const location = useLocation();
-  const history = useHistory();
-
-  const handleClick = (e, path) => {
-    e.preventDefault();
-    history.push(`/${path}`);
-  };
-  return (
-    <div className="ml-auto pr-5">
-      {location.pathname === "/matches" ? (
-        <button
-          className="btn btn-sm primary-btn small-btn"
-          onClick={(e) => handleClick(e, "add-match")}
-        >
-          <i className="mdi mdi-soccer mr-2" /> Add New Match
-        </button>
-      ) : location.pathname === "/teams" ? (
-        <button
-          className="btn btn-sm primary-btn small-btn"
-          onClick={(e) => handleClick(e, "create-team")}
-        >
-          <i className="mdi mdi-vlc mr-2" />
-          Create Team
-        </button>
-      ) : location.pathname === "/competitions" ? (
-        <button
-          className="btn btn-sm primary-btn small-btn"
-          onClick={(e) => handleClick(e, "add-competition")}
-        >
-          <i className="mdi mdi-trophy-outline mr-1" />
-          Create Competition
-        </button>
-      ) : (
-        ""
-      )}
-    </div>
-  );
-};
