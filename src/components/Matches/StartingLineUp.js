@@ -28,7 +28,9 @@ export default function StartingLineUp() {
     <div className="starting-line-up container-fluid pt-3">
       <div className="row">
         <div className="col-lg-6">
-          <p>Select Team lineup for {location?.state.home_team}</p>
+          <p className="header mb-2">
+            Select Team lineup for {location?.state.home_team}
+          </p>
           <div className="players-list">
             <div className="row pl-0 pr-lg-5">
               <div className="col-lg-6">
@@ -36,7 +38,7 @@ export default function StartingLineUp() {
                   {homePlayers?.first.map((player) => (
                     <li>
                       <Checkbox color="primary" />
-                      <i className="text-muted">{player.number}.</i>
+                      <span className="text-muted">{player.number}.</span>
 
                       {player.name}
                       <small>{player.position}</small>
@@ -49,7 +51,7 @@ export default function StartingLineUp() {
                   {homePlayers?.second.map((player) => (
                     <li>
                       <Checkbox color="primary" fontSize="small" />
-                      <i className="text-muted">{player.number}.</i>
+                      <span className="text-muted">{player.number}.</span>
 
                       {player.name}
                       <small>{player.position}</small>
@@ -61,7 +63,9 @@ export default function StartingLineUp() {
           </div>
         </div>
         <div className="col-lg-6">
-          <p>Select Team lineup for {location?.state.away_team}</p>
+          <p className="header mb-2">
+            Select Team lineup for {location?.state.away_team}
+          </p>
           <div className="players-list">
             <div className="row">
               <div className="col-lg-6">
@@ -69,7 +73,7 @@ export default function StartingLineUp() {
                   {homePlayers?.first.map((player) => (
                     <li>
                       <Checkbox color="primary" />
-                      <i className="text-muted">{player.number}.</i>
+                      <span className="text-muted">{player.number}.</span>
 
                       {player.name}
                       <small>{player.position}</small>
@@ -82,7 +86,7 @@ export default function StartingLineUp() {
                   {homePlayers?.second.map((player) => (
                     <li>
                       <Checkbox color="primary" fontSize="small" />
-                      <i className="text-muted">{player.number}.</i>
+                      <span className="text-muted">{player.number}.</span>
 
                       {player.name}
                       <small>{player.position}</small>
@@ -101,7 +105,7 @@ export default function StartingLineUp() {
             onClick={() => {
               history.push({
                 pathname: "/match/start-match/1R1dad21n-ak22-jHYE21iD",
-                state: {...location.state}
+                state: { ...location.state },
               });
             }}
           >

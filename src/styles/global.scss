@@ -26,7 +26,7 @@ body {
     padding: 8px 11px;
 
     &:hover {
-        background-color: #446bd8;
+        background-color: #234ab5d5 !important;
     }
 
     &.form-control {
@@ -97,10 +97,38 @@ nav {
 .form-control {
     height: 3rem !important;
     font-size: 13px !important;
+    margin-bottom: 1.2rem;
 
     &:focus {
         box-shadow: none !important;
         background-color: #F6F7F9;
         border: 1px inset rgba(69, 73, 70, 0.25);
     }
+}
+
+.btn-xs {
+    padding: 6px 11px;
+    font-weight: 500;
+    i {
+     margin-right: 10px !important;
+     font-size: 1rem;   
+    }
+}
+
+.custom-select {
+    width: auto;
+    margin-left: 1rem;
+    height: 2.1rem !important;
+    margin-bottom: 0;
+}
+
+.mdb-datatable-filter {
+   .form-control {
+        height: 2.5rem !important;
+        
+    }
+}
+
+table {
+    margin-top: 1rem;
 }

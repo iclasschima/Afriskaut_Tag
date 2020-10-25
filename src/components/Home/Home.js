@@ -1,7 +1,7 @@
 import React from "react";
 // import Card from "./Card";
 import { Helmet } from "react-helmet"
-import "../../styles/matches.scss";
+import "../../styles/home.scss";
 import moment from "moment";
 // import { BiFootball } from "react-icons/bi";
 // import matches from "../../helpers/matches"

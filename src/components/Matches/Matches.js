@@ -3,26 +3,26 @@ import Card from "./Card";
 import PlayedCard from "./PlayedCard";
 import "../../styles/matches.scss";
 import matches from "../../helpers/matches";
-import { useHistory } from "react-router-dom"
-import {GrFormNextLink} from "react-icons/gr"
+import { useHistory } from "react-router-dom";
+import { GrFormNextLink } from "react-icons/gr";
 
 export default function Matches() {
-
-  const history = useHistory()
+  const history = useHistory();
 
   return (
     <div className="container-fluid matches">
       <div className="row">
-        <button
-          className="btn primary-btn ml-auto mr-3"
-          onClick={() => history.push("/add-match")}
-        >
-          <i className="mdi mdi-soccer mr-2" /> Add New Match
-        </button>
-        <div className="col-12">
+        <div className="col-12 d-flex align-items-center justify-content-between my-2">
           <p className="header">
             <i className="mdi mdi-soccer mr-1"></i> Upcoming Matches
           </p>
+
+          <button
+            className="btn primary-btn ml-auto"
+            onClick={() => history.push("/add-match")}
+          >
+            <i className="mdi mdi-plus mr-2" /> Add Match
+          </button>
         </div>
       </div>
       <div className="row">

@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/add-match.scss";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import competitions from "../../helpers/competitions";
 import teams from "../../helpers/teams";
 
@@ -10,7 +10,7 @@ export default function Add() {
     // history.push("/add-players");
   };
 
-  const history = useHistory()
+  const history = useHistory();
 
   const lineup = () => {
     history.push({
@@ -20,17 +20,23 @@ export default function Add() {
         away_team: "Akwa United FC",
       },
     });
-  }
+  };
 
   return (
     <div className="add-match container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <p className="header">
-            <i className="mdi mdi-soccer mr-1" /> Create Match
-          </p>
-        </div>
+      <div className="row mb-0 mt-2">
+        <p className="header">
+          <i className="mdi mdi-soccer mr-1" /> Add Match
+        </p>
+        <button
+          className="btn btn-xs primary-btn ml-auto"
+          onClick={() => history.push("/matches")}
+        >
+          <i className="mdi mdi-arrow-left mr-1" />
+          Back
+        </button>
       </div>
+
       <div className="row mt-4 justify-content-center inner-content-wrapper">
         <div className="col-lg-6">
           <form>

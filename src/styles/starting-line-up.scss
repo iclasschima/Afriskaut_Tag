@@ -1,8 +1,9 @@
 .starting-line-up {
+    width: 80%;
 
     ul {
         list-style-type: none;
-        font-size: 12px;
+        font-size: 13px;
 
         li {
             position: relative;
@@ -10,12 +11,12 @@
             small {
                 position: absolute;
                 bottom: -18%;
-                left: 25%;
+                left: 27%;
                 color: #2B52BA;
                 text-transform: capitalize;
             }
-            i {
-               margin-right: 3px;
+            span {
+               margin-right: 5px;
             }
         }
     }
