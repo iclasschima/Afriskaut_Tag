@@ -75,7 +75,7 @@ export default function SecuredRoutes() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/teams" exact component={Teams} />
-        <Route path="/create-team" exact component={CreateTeam} />
+        <Route path="/add-team" exact component={CreateTeam} />
         <Route path="/matches" exact component={Matches} />
         <Route path="/add-players" exact component={AddPlayers} />
         <Route path="/competitions" exact component={Competitions} />

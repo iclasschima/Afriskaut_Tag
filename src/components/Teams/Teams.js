@@ -1,48 +1,38 @@
-import React from 'react'
-import Table from "./Table"
+import React from "react";
+import Table from "./Table";
 import { Helmet } from "react-helmet";
-import { useHistory } from "react-router-dom"
-import "../../styles/teams.scss"
-import teams from "../../helpers/teams"
+import { useHistory } from "react-router-dom";
+import "../../styles/teams.scss";
+import teams from "../../helpers/teams";
 
 export default function Teams() {
+  const history = useHistory();
 
-  const history = useHistory()
+  return (
+    <div className="teams container-fluid">
+      <Helmet>
+        <title>Afriskaut - Teams</title>
+      </Helmet>
 
-    return (
-      <div className="teams container-fluid">
-        <Helmet>
-          <title>Afriskaut - Teams</title>
-        </Helmet>
-        {/* <nav aria-label="breadcrumb" className="col-7">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page">
-              Teams
-            </li>
-            <li class="breadcrumb-item">
-              <a href="/">Library</a>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">
-              Data
-            </li>
-          </ol>
-        </nav> */}
-        <div className="row">
-          <button
-            className="btn btn-sm primary-btn small-btn ml-auto"
-            onClick={() => history.push("/create-team")}
-          >
+      <div className="row my-4">
+        <div className="col-12 d-flex align-items-center justify-content-between">
+          <p className="header">
             <i className="mdi mdi-vlc mr-2" />
-            Create Team
+            All Teams
+          </p>
+
+          <button
+            className="btn btn-xs primary-btn ml-auto"
+            onClick={() => history.push("/add-team")}
+          >
+            <i className="mdi mdi-plus mr-1" />
+            Add Team
           </button>
-          <div className="col-12 mb-3">
-            <p className="header">
-              <i className="mdi mdi-vlc mr-2"></i>
-              All Teams
-            </p>
-          </div>
         </div>
+      </div>
+      <div className="inner-content-wrapper px-3 py-4">
         <Table teams={teams} />
       </div>
-    );
+    </div>
+  );
 }

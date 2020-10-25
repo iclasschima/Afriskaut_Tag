@@ -1,20 +1,34 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { RiTShirt2Line } from "react-icons/ri";
-import TextField from "@material-ui/core/TextField";
 import "../../styles/add-players.scss";
 
 export default function AddPlayers() {
+  const history = useHistory();
+
   const [fields, setfields] = useState([
     { player_name: "", age: "", position: "", number: "" },
     { player_name: "", age: "", position: "", number: "" },
   ]);
 
-  const handleChange = (e, index) => {
-    const { name, value } = e.target;
-    const list = [...fields];
-    list[index][name] = value;
-    setfields(list);
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   history.push("/add-players");
+  // };
+
+  const handleRemove = (index) => {
+    const newFields = [...fields];
+    newFields.splice(index, 1);
+    setfields([...newFields])
+   
   };
+
+  // const handleChange = (e, index) => {
+  //   const { name, value } = e.target;
+  //   const list = [...fields];
+  //   list[index][name] = value;
+  //   setfields(list);
+  // };
 
   const handleAddField = (e) => {
     e.preventDefault();
@@ -26,29 +40,34 @@ export default function AddPlayers() {
 
   return (
     <div className="container-fluid add-players">
-      <div className="row">
-        <div className="col-12">
-          <p className="header">
-            <RiTShirt2Line /> Add Players
-          </p>
-        </div>
+      <div className="row my-2">
+        <p className="header">
+          <RiTShirt2Line /> Add Players
+        </p>
+        <button
+          className="btn btn-xs primary-btn ml-auto"
+          onClick={() => history.push("/teams")}
+        >
+          <i className="mdi mdi-arrow-left mr-1" />
+          Back
+        </button>
       </div>
-      <div className="row justify-content-center mt-1">
+      <div className="row justify-content-center mt-3 inner-content-wrapper">
         <div className="col-11">
           <form>
             {fields.map((data, index) => {
               return (
-                <Field data={data} index={index} handleChange={handleChange} />
+                <Field data={data} index={index} handleRemove={handleRemove} />
               );
             })}
 
             <div className="row pl-0 mt-3">
-              <div className="col-3 pl-0">
+              <div className="col-lg-2 pl-0">
                 <button className="btn form-control primary-btn">
                   Submit Players
                 </button>
               </div>
-              <div className="col-3 pl-0">
+              <div className="col-lg-2 pl-0">
                 <button
                   className="btn form-control primary-btn"
                   onClick={handleAddField}
@@ -64,53 +83,63 @@ export default function AddPlayers() {
   );
 }
 
-const Field = ({ index, data, handleChange }) => {
+const Field = ({ index, data, handleRemove }) => {
   return (
-    <div className="form-group row my-2">
-      <div className="col">
-        <TextField
-          label="Player Name"
-          name="player_name"
-          value={data.player_name}
-          size="small"
-          variant="outlined"
-          onChange={(e) => handleChange(e, index)}
-        />
-      </div>
+    <>
+      <div className="form-row">
+        <div className="form-group col">
+          <label>Player Image</label>
+          <input
+            className="form-control"
+            type="file"
+            name="name"
+            placeholder="Obi Femi"
+          />
+        </div>
 
-      <div className="col">
-        <TextField
-          label="Age"
-          name="age"
-          value={data.age}
-          type="number"
-          size="small"
-          variant="outlined"
-          onChange={(e) => handleChange(e, index)}
-        />
+        <div className="form-group col">
+          <label>Full Name</label>
+          <input
+            className="form-control"
+            type="text"
+            name="name"
+            placeholder="Obi Femi"
+          />
+        </div>
+        <div className="form-group col">
+          <label>Date Of Birth</label>
+          <input
+            className="form-control"
+            type="date"
+            name="name"
+            placeholder="18"
+          />
+        </div>
+        <div className="form-group col">
+          <label>Position</label>
+          <input
+            className="form-control"
+            type="text"
+            name="name"
+            placeholder="Forward"
+          />
+        </div>
+        <div className="form-group col">
+          <label>Shirt Number</label>
+          <input
+            className="form-control"
+            type="number"
+            name="name"
+            placeholder="Obi Femi"
+          />
+        </div>
+        <div className="remove-div">
+          <i
+            className="mdi mdi-delete-outline"
+            onClick={() => handleRemove(index)}
+          />
+        </div>
       </div>
-
-      <div className="col">
-        <TextField
-          label="Position"
-          name="position"
-          value={data.position}
-          size="small"
-          variant="outlined"
-          onChange={(e) => handleChange(e, index)}
-        />
-      </div>
-      <div className="col">
-        <TextField
-          label="Shirt Number"
-          name="number"
-          value={data.number}
-          type="number"
-          size="small"
-          variant="outlined"
-          onChange={(e) => handleChange(e, index)}
-        />
-      </div>
-    </div>
+    </>
   );
 };

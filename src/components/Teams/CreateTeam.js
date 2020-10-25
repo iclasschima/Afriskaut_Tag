@@ -14,11 +14,16 @@ export default function CreateTeam() {
     return (
       <div className="create-team container-fluid">
         <div className="row">
-          <div className="col-12">
             <p className="header">
-              <i className="mdi mdi-vlc mr-1"></i> Create New Team
+              <i className="mdi mdi-vlc mr-1"></i> Add Team
             </p>
-          </div>
+            <button
+              className="btn btn-xs primary-btn ml-auto"
+              onClick={() => history.push("/teams")}
+            >
+              <i className="mdi mdi-arrow-left mr-1" />
+              Back
+            </button>
         </div>
         <div className="row mt-3 justify-content-center inner-content-wrapper">
           <div className="col-6">
@@ -56,11 +61,8 @@ export default function CreateTeam() {
                 <label>Club Image</label>
                 <input className="form-control" type="file" name="name" />
               </div>
-              <button
-                className="btn primary-btn mt-2"
-                onClick={handleSubmit}
-              >
-                Create Team
+              <button className="btn primary-btn mt-2" onClick={handleSubmit}>
+                Add Team
               </button>
             </form>
           </div>
