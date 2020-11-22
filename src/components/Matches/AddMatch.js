@@ -1,16 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/add-match.scss";
 import { useHistory } from "react-router-dom";
-import competitions from "../../helpers/competitions";
-import teams from "../../helpers/teams";
+import { fetchCompetitions } from "../../store/actions/competition";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchTeam } from "../../store/actions/team";
 
-export default function Add() {
+import { addMatch } from "../../store/actions/match";
+
+export default function Add(props) {
+  const [data, setData] = useState({});
+  const { competitions } = useSelector((state) => state.competition);
+  const { teams } = useSelector((state) => state.team);
+
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // history.push("/add-players");
+    dispatch(addMatch({ data, history: props.history }));
   };
 
+  useEffect(() => {
+    dispatch(fetchCompetitions());
+    dispatch(fetchTeam());
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   const history = useHistory();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setData({ ...data, [name]: value });
+  };
 
   const lineup = () => {
     history.push({
@@ -42,13 +66,21 @@ export default function Add() {
           <form>
             <div className="form-group">
               <label>Choose Competition</label>
-              <select className="form-control">
+              <select
+                onChange={handleChange}
+                name="competition_id"
+                className="form-control"
+              >
                 <option>Select Competition</option>
-                {competitions.map((competition) => {
+                {competitions?.map((competition) => {
                   return (
-                    <option value={competition.id}>
-                      {competition.competition_name}
-                    </option>
+                    <>
+                      {competition?.name && (
+                        <option key={competition._id} value={competition._id}>
+                          {competition.name}
+                        </option>
+                      )}
+                    </>
                   );
                 })}
               </select>
@@ -56,23 +88,51 @@ export default function Add() {
 
             <div className="form-group">
               <label>Choose Home Team</label>
-              <select className="form-control">
+              <select
+                onChange={handleChange}
+                name="team_A_id"
+                className="form-control"
+              >
                 <option>Select Home Team</option>
-                {teams.map((team) => {
-                  return <option value={team.id}>{team.team_name}</option>;
+                {teams?.map((team) => {
+                  return (
+                    <>
+                      {team?.name && (
+                        <option
+                          key={team._id}
+                          value={team._id}
+                          disabled={team._id === data.team_B_id}
+                        >
+                          {team.name}
+                        </option>
+                      )}
+                    </>
+                  );
                 })}
               </select>
             </div>
 
             <div className="form-group">
               <label>Choose Away Team</label>
-              <select className="form-control">
+              <select
+                onChange={handleChange}
+                name="team_B_id"
+                className="form-control"
+              >
                 <option>Select Away Team</option>
-                {teams.map((team) => {
+                {teams?.map((team) => {
                   return (
-                    <option value={team.id} disabled={team.id === 2}>
-                      {team.team_name}
-                    </option>
+                    <>
+                      {team?.name && (
+                        <option
+                          key={team._id}
+                          value={team._id}
+                          disabled={team._id === data.team_A_id}
+                        >
+                          {team.name}
+                        </option>
+                      )}
+                    </>
                   );
                 })}
               </select>
@@ -81,6 +141,8 @@ export default function Add() {
             <div className="form-group">
               <label>Location</label>
               <input
+                onChange={handleChange}
+                name="location"
                 className="form-control"
                 placeholder="Lagos State Stadium, Surulere"
               />
@@ -88,17 +150,22 @@ export default function Add() {
 
             <div className="form-group">
               <label>Date</label>
-              <input type="date" className="form-control" />
+              <input
+                onChange={handleChange}
+                name="date"
+                type="date"
+                className="form-control"
+              />
             </div>
 
             <div className="form-group">
               <label>Time</label>
-              <input type="time" className="form-control" />
-            </div>
-
-            <div className="form-group">
-              <label>Refree</label>
-              <input className="form-control" placeholder="Mr A.O Adeyemi" />
+              <input
+                onChange={handleChange}
+                name="time"
+                type="time"
+                className="form-control"
+              />
             </div>
 
             <button
@@ -114,29 +181,29 @@ export default function Add() {
       </div>
 
       <div
-        class="modal fade"
+        className="modal fade"
         id="add_match"
-        tabindex="-1"
+        tabIndex="-1"
         role="dialog"
         aria-labelledby="add_match"
         aria-hidden="true"
       >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <small class="modal-title" id="exampleModalLabel">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <small className="modal-title" id="exampleModalLabel">
                 Start the match now?
               </small>
               <button
                 type="button"
-                class="close"
+                className="close"
                 data-dismiss="modal"
                 aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <div className=" text-center">
                 <div></div>
                 <button
@@ -155,7 +222,7 @@ export default function Add() {
                 </button>
               </div>
             </div>
-            <div class="modal-footer">
+            <div className="modal-footer">
               <button
                 type="button"
                 className="btn btn-xs btn-light"

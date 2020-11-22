@@ -29,7 +29,7 @@ export default function Header() {
               >
                 <span>Dashboard</span>
               </a>
-
+              {/* 
               <a
                 onClick={(e) => handleClick(e, "matches")}
                 className={`nav-item nav-link ${
@@ -38,7 +38,7 @@ export default function Header() {
                 href="/"
               >
                 <span>Matches</span>
-              </a>
+              </a> */}
               <a
                 onClick={(e) => handleClick(e, "teams")}
                 className={`nav-item nav-link ${

@@ -16,9 +16,15 @@ export default function Table({ teams }) {
         width: 150,
         sort: "asc",
       },
+      // {
+      //   label: "League",
+      //   field: "league",
+      //   width: 150,
+      //   sort: "asc",
+      // },
       {
-        label: "League",
-        field: "league",
+        label: "Nick Name",
+        field: "nick_name",
         width: 150,
         sort: "asc",
       },
@@ -28,21 +34,29 @@ export default function Table({ teams }) {
         width: 150,
         sort: "asc",
       },
-      {
-        label: "No. of Players",
-        field: "players",
-        width: 150,
-        sort: "asc",
-      },
+      // {
+      //   label: "No. of Players",
+      //   field: "players",
+      //   width: 150,
+      //   sort: "asc",
+      // },
+      // {
+      //   label: "Season",
+      //   field: "season",
+      //   width: 150,
+      //   sort: "asc",
+      // },
     ],
 
     rows: teams.map((data, index) => {
       return {
         serial_number: index + 1,
-        name: data.team_name,
+        name: data.name,
         league: data.league,
+        nick_name: data.nick_name,
         country: data.country,
-        players: data.players,
+        players: data?.squad?.length || 0,
+        // season: data.season,
         clickEvent: () => console.log("Hello"),
       };
     }),

@@ -1,134 +1,137 @@
 * {
-    font-family: 'Baloo Chettan 2','Kufam',
-    cursive,
-    ubuntu !important;
-    padding: 0;
-    margin: 0;
+  font-family: "Baloo Chettan 2", "Kufam", cursive, ubuntu !important;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-    background-color: #f9fafb;
+  background-color: #f9fafb;
 }
 
 .inner-content-wrapper {
-    background: #fff;
-    border-radius: 6px;
-    box-shadow: 0 0 10px 0 rgba(183, 192, 206, .2);
-    margin-bottom: 1.5rem;
-    border: 1px solid rgba(238, 238, 238, .75);
-    padding-top: 3%;
-     padding-bottom: 3%;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 10px 0 rgba(183, 192, 206, 0.2);
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(238, 238, 238, 0.75);
+  padding-top: 3%;
+  padding-bottom: 3%;
 }
 
 .primary-btn {
-    background-color: #2B52BA !important;
-    color: #fff !important;
-    padding: 8px 11px;
+  background-color: #2b52ba !important;
+  color: #fff !important;
+  padding: 8px 11px;
 
-    &:hover {
-        background-color: #234ab5d5 !important;
-    }
+  &:hover {
+    background-color: #234ab5d5 !important;
+  }
 
-    &.form-control {
-        height: 3rem;
-        font-size: 13px;
-        font-weight: 500;
-        text-transform: uppercase;
-    }
+  &.form-control {
+    height: 3rem;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
 }
 
 .small-btn {
-    font-size: 13px;
-    font-weight: 400;
+  font-size: 13px;
+  font-weight: 400;
 
-    svg {
-        margin-right: 7px;
-    }
+  svg {
+    margin-right: 7px;
+  }
 }
 
 .header {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 500;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
 
-    svg {
-        margin-right: 6px;
-    }
+  svg {
+    margin-right: 6px;
+  }
 }
 
 form {
+  input {
+    font-size: 14px !important;
+  }
 
-    input {
-        font-size: 14px !important;
-    }
+  label {
+    font-size: 14px !important;
+  }
 
-    label {
-        font-size: 14px !important;
-    }
+  button {
+    min-width: 8rem !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+  }
 
-    button {
-        min-width: 8rem !important;
-        font-size: 14px !important;
-        font-weight: 500 !important;
-    }
+  .MuiInputLabel-outlined.MuiInputLabel-shrink {
+    transform: translate(18px, -6px) scale(0.75);
+  }
 
-    .MuiInputLabel-outlined.MuiInputLabel-shrink {
-        transform: translate(18px, -6px) scale(0.75);
-    }
-
-    .MuiOutlinedInput-inputMarginDense {
-        font-family: 'Baloo Chettan 2',
-        'Kufam',
-            cursive !important;
-    }
+  .MuiOutlinedInput-inputMarginDense {
+    font-family: "Baloo Chettan 2", "Kufam", cursive !important;
+  }
 }
 
 .page-link {
-    cursor: pointer !important;
+  cursor: pointer !important;
 }
 
-
 nav {
-    li {
-        font-size: 13px;
-    }
+  li {
+    font-size: 13px;
+  }
 }
 
 .form-control {
-    height: 3rem !important;
-    font-size: 13px !important;
-    margin-bottom: 1.2rem;
+  height: 3rem !important;
+  font-size: 13px !important;
+  margin-bottom: 1.2rem;
 
-    &:focus {
-        box-shadow: none !important;
-        background-color: #F6F7F9;
-        border: 1px inset rgba(69, 73, 70, 0.25);
-    }
+  &:focus {
+    box-shadow: none !important;
+    background-color: #f6f7f9;
+    border: 1px inset rgba(69, 73, 70, 0.25);
+  }
 }
 
 .btn-xs {
-    padding: 6px 11px;
-    font-weight: 500;
-    i {
-     margin-right: 10px !important;
-     font-size: 1rem;   
-    }
+  padding: 6px 11px;
+  font-weight: 500;
+  i {
+    margin-right: 10px !important;
+    font-size: 1rem;
+  }
 }
 
 .custom-select {
-    width: auto;
-    margin-left: 1rem;
-    height: 2.1rem !important;
-    margin-bottom: 0;
+  width: auto;
+  margin-left: 1rem;
+  height: 2.1rem !important;
+  margin-bottom: 0;
 }
 
 .mdb-datatable-filter {
-   .form-control {
-        height: 2.5rem !important;
-        
-    }
+  .form-control {
+    height: 2.5rem !important;
+  }
 }
 
 table {
-    margin-top: 1rem;
+  margin-top: 1rem;
+}
+
+#nprogress .bar {
+  display: none;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: white;
+  border-left-color: white;
+  margin-right: 2rem;
 }
