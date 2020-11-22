@@ -1,42 +1,47 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useHistory, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { RiTShirt2Line } from "react-icons/ri";
 import "../../styles/add-players.scss";
+import { addTeam } from "../../store/actions/team";
 
-export default function AddPlayers() {
+export default function AddPlayers(props) {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const location = useLocation();
 
   const [fields, setfields] = useState([
-    { player_name: "", age: "", position: "", number: "" },
-    { player_name: "", age: "", position: "", number: "" },
+    { name: "", dob: "", position: "", number: "" },
+    { name: "", dob: "", position: "", number: "" },
   ]);
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   history.push("/add-players");
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = { ...location?.state, players: [...fields] };
+    dispatch(addTeam({ data, history: props.history }));
+  };
 
   const handleRemove = (index) => {
     const newFields = [...fields];
     newFields.splice(index, 1);
-    setfields([...newFields])
-   
+    setfields([...newFields]);
   };
 
-  // const handleChange = (e, index) => {
-  //   const { name, value } = e.target;
-  //   const list = [...fields];
-  //   list[index][name] = value;
-  //   setfields(list);
-  // };
+  const handleChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...fields];
+    list[index][name] = value;
+    setfields([...list]);
+  };
 
   const handleAddField = (e) => {
     e.preventDefault();
-    setfields([
-      ...fields,
-      { player_name: "", age: "", position: "", number: "" },
-    ]);
+    setfields([...fields, { name: "", dob: "", position: "", number: "" }]);
   };
+
+  useEffect(() => {
+    console.log(fields);
+  }, [fields]);
 
   return (
     <div className="container-fluid add-players">
@@ -57,13 +62,22 @@ export default function AddPlayers() {
           <form>
             {fields.map((data, index) => {
               return (
-                <Field data={data} index={index} handleRemove={handleRemove} />
+                <Field
+                  key={index}
+                  data={data}
+                  index={index}
+                  handleChange={handleChange}
+                  handleRemove={handleRemove}
+                />
               );
             })}
 
             <div className="row pl-0 mt-3">
               <div className="col-lg-2 pl-0">
-                <button className="btn form-control primary-btn">
+                <button
+                  className="btn form-control primary-btn"
+                  onClick={handleSubmit}
+                >
                   Submit Players
                 </button>
               </div>
@@ -83,19 +97,20 @@ export default function AddPlayers() {
   );
 }
 
-const Field = ({ index, data, handleRemove }) => {
+const Field = ({ index, data, handleChange, handleRemove }) => {
   return (
     <>
       <div className="form-row">
-        <div className="form-group col">
+        {/* <div className="form-group col">
           <label>Player Image</label>
           <input
             className="form-control"
             type="file"
             name="name"
             placeholder="Obi Femi"
+            onChange={(e) => handleChange(e, index)}
           />
-        </div>
+        </div> */}
 
         <div className="form-group col">
           <label>Full Name</label>
@@ -103,6 +118,7 @@ const Field = ({ index, data, handleRemove }) => {
             className="form-control"
             type="text"
             name="name"
+            onChange={(e) => handleChange(e, index)}
             placeholder="Obi Femi"
           />
         </div>
@@ -111,8 +127,9 @@ const Field = ({ index, data, handleRemove }) => {
           <input
             className="form-control"
             type="date"
-            name="name"
+            name="dob"
             placeholder="18"
+            onChange={(e) => handleChange(e, index)}
           />
         </div>
         <div className="form-group col">
@@ -120,8 +137,9 @@ const Field = ({ index, data, handleRemove }) => {
           <input
             className="form-control"
             type="text"
-            name="name"
+            name="position"
             placeholder="Forward"
+            onChange={(e) => handleChange(e, index)}
           />
         </div>
         <div className="form-group col">
@@ -129,8 +147,9 @@ const Field = ({ index, data, handleRemove }) => {
           <input
             className="form-control"
             type="number"
-            name="name"
-            placeholder="Obi Femi"
+            name="number"
+            placeholder="20"
+            onChange={(e) => handleChange(e, index)}
           />
         </div>
         <div className="remove-div">

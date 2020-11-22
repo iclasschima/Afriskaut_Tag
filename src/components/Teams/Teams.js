@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Table from "./Table";
 import { Helmet } from "react-helmet";
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import "../../styles/teams.scss";
-import teams from "../../helpers/teams";
+import { fetchTeam } from "../../store/actions/team";
 
 export default function Teams() {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const { teams } = useSelector((state) => state.team);
+
+  useEffect(() => {
+    dispatch(fetchTeam());
+  }, []);
+
 
   return (
     <div className="teams container-fluid">
@@ -31,7 +39,7 @@ export default function Teams() {
         </div>
       </div>
       <div className="inner-content-wrapper px-3 py-4">
-        <Table teams={teams} />
+        <Table teams={teams || []} />
       </div>
     </div>
   );

@@ -1,11 +1,20 @@
-import React from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from "react";
 import Table from "./Table";
 import "../../styles/competition.scss";
-import competitions from "../../helpers/competitions";
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCompetitions } from "../../store/actions/competition";
 
 export default function Teams() {
   const history = useHistory();
+
+  const { competitions } = useSelector((state) => state.competition);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchCompetitions());
+  }, []);
 
   return (
     <div className="competitions container-fluid">
@@ -26,7 +35,8 @@ export default function Teams() {
         </div>
       </div>
       <div className=" inner-content-wrapper py-4 px-3">
-        <Table teams={competitions} />
+        {console.log(competitions)}
+        <Table competitions={competitions || []} />
       </div>
     </div>
   );

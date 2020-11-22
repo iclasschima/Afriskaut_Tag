@@ -42,13 +42,13 @@ const Competitions = Loadable({
 });
 
 const AddCompetitions = Loadable({
-  loader: () => import("./components/Competitions/Add"),
+  loader: () => import("./components/Competitions/AddCompetition"),
   loading: Loader,
   delay: 100,
 });
 
 const AddMatch = Loadable({
-  loader: () => import("./components/Matches/Add"),
+  loader: () => import("./components/Matches/AddMatch"),
   loading: Loader,
   delay: 100,
 });
@@ -59,18 +59,16 @@ const Lineup = Loadable({
   delay: 100,
 });
 
-
 const StartMatch = Loadable({
   loader: () => import("./components/Matches/StartMatch"),
   loading: Loader,
   delay: 100,
 });
 
-export default function SecuredRoutes() {
+export default function SecuredRoutes(props) {
   return (
     <div className="main-container container-fluid">
-      <div className="row">
-      </div>
+      <div className="row"></div>
 
       <Switch>
         <Route path="/" exact component={Home} />
@@ -82,7 +80,7 @@ export default function SecuredRoutes() {
         <Route path="/add-competition" exact component={AddCompetitions} />
         <Route path="/add-match" exact component={AddMatch} />
         <Route path="/match/lineup/:id" exact component={Lineup} />
-         <Route path="/match/start-match/:id" exact component={StartMatch} />
+        <Route path="/match/start-match/:id" exact component={StartMatch} />
       </Switch>
 
       <Footer />

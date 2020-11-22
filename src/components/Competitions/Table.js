@@ -1,7 +1,7 @@
 import React from "react";
 import { MDBDataTable } from "mdbreact";
 
-export default function Table({ teams }) {
+export default function Table({ competitions }) {
   const data = {
     columns: [
       {
@@ -29,28 +29,28 @@ export default function Table({ teams }) {
         sort: "asc",
       },
 
-      {
-        label: "Season",
-        field: "season",
-        width: 150,
-        sort: "asc",
-      },
-      {
-        label: "No. of Teams",
-        field: "teams",
-        width: 150,
-        sort: "asc",
-      },
+      // {
+      //   label: "Season",
+      //   field: "season",
+      //   width: 150,
+      //   sort: "asc",
+      // },
+      // {
+      //   label: "No. of Teams",
+      //   field: "teams",
+      //   width: 150,
+      //   sort: "asc",
+      // },
     ],
 
-    rows: teams.map((data, index) => {
+    rows: competitions.map((data, index) => {
       return {
         serial_number: index + 1,
-        name: data.competition_name,
+        name: data.name,
         league: data.abbrev,
-        country: data.country,
-        teams: data.teams,
-        season: data.season,
+        country: data.type,
+        teams: data.country,
+        // season: data.season,
         clickEvent: () => console.log("Hello"),
       };
     }),

@@ -1,30 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "../../styles/create-team.scss";
+import { addCompetition } from "../../store/actions/competition";
+import { useDispatch } from "react-redux";
 
-export default function CreateTeam() {
+export default function CreateTeam(props) {
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const [state, setState] = useState({
+    competition_name: "",
+    abbrev: "",
+    type: "",
+    competition_country: "",
+    season: "",
+    no_of_teams: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push("/add-players");
+    dispatch(addCompetition({ data: state, history: props.history }));
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setState({ ...state, [name]: value });
   };
 
   return (
     <div className="create-team container-fluid mb-3">
       <div className="row mb-0">
-
-          <p className="header">
-            <i className="mdi mdi-trophy-outline mr-1" /> Create Competition
-          </p>
-          <button
-            className="btn btn-xs primary-btn ml-auto"
-            onClick={() => history.push("/competitions")}
-          >
-            <i className="mdi mdi-arrow-left mr-1" />
-            Back
-          </button>
-   
+        <p className="header">
+          <i className="mdi mdi-trophy-outline mr-1" /> Create Competition
+        </p>
+        <button
+          className="btn btn-xs primary-btn ml-auto"
+          onClick={() => history.push("/competitions")}
+        >
+          <i className="mdi mdi-arrow-left mr-1" />
+          Back
+        </button>
       </div>
       <div className="row mt-4 justify-content-center inner-content-wrapper">
         <div className="col-lg-6 px-lg-4">
@@ -34,8 +49,9 @@ export default function CreateTeam() {
               <input
                 className="form-control"
                 type="text"
-                name="name"
+                name="competition_name"
                 placeholder="Nigeria Professional Football League"
+                onChange={handleChange}
               />
             </div>
             <div className="form-group">
@@ -43,8 +59,9 @@ export default function CreateTeam() {
               <input
                 className="form-control"
                 type="text"
-                name="name"
+                name="abbrev"
                 placeholder="NPFL"
+                onChange={handleChange}
               />
             </div>
 
@@ -53,8 +70,9 @@ export default function CreateTeam() {
               <input
                 className="form-control"
                 type="text"
-                name="name"
+                name="competition_country"
                 placeholder="Nigeria"
+                onChange={handleChange}
               />
             </div>
             <div className="form-group">
@@ -62,13 +80,18 @@ export default function CreateTeam() {
               <input
                 className="form-control"
                 type="text"
-                name="name"
+                name="season"
                 placeholder="2020/2021"
+                onChange={handleChange}
               />
             </div>
             <div className="form-group">
               <label>Type</label>
-              <select className="form-control">
+              <select
+                className="form-control"
+                name="type"
+                onChange={handleChange}
+              >
                 <option>Select type</option>
                 <option>League</option>
                 <option>Cup</option>
@@ -80,8 +103,9 @@ export default function CreateTeam() {
               <input
                 className="form-control"
                 type="number"
-                name="name"
+                name="no_of_teams"
                 placeholder="20"
+                onChange={handleChange}
               />
             </div>
 
@@ -90,8 +114,8 @@ export default function CreateTeam() {
               <input
                 className="form-control"
                 type="file"
-                name="name"
-                placeholder="2020/2021"
+                name="image"
+                onChange={handleChange}
               />
             </div>
 
