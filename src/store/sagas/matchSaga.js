@@ -35,13 +35,13 @@ function* handleAddMatch({ payload, history }) {
   }
 }
 
-function* handleFetchMatches() {
-  const api = `${API_BASE_URL}/routes/create-match`;
-}
+// function* handleFetchMatches() {
+//   const api = `${API_BASE_URL}/routes/create-match`;
+// }
 
 const matchSaga = [
   takeLatest(MATCH.ADD_MATCH, handleAddMatch),
-  takeLatest(MATCH.FETCH_MATCHES, handleFetchMatches),
+  // takeLatest(MATCH.FETCH_MATCHES, handleFetchMatches),
 ];
 
 export default matchSaga;
