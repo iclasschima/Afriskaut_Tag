@@ -1,7 +1,10 @@
 import React from "react";
 import { MDBDataTable } from "mdbreact";
+import { useHistory } from "react-router-dom";
 
 export default function Table({ competitions }) {
+  const history = useHistory();
+
   const data = {
     columns: [
       {
@@ -28,30 +31,22 @@ export default function Table({ competitions }) {
         width: 150,
         sort: "asc",
       },
-
-      // {
-      //   label: "Season",
-      //   field: "season",
-      //   width: 150,
-      //   sort: "asc",
-      // },
-      // {
-      //   label: "No. of Teams",
-      //   field: "teams",
-      //   width: 150,
-      //   sort: "asc",
-      // },
     ],
 
-    rows: competitions.map((data, index) => {
+    rows: competitions.map((competition, index) => {
       return {
         serial_number: index + 1,
-        name: data.name,
-        league: data.abbrev,
-        country: data.type,
-        teams: data.country,
-        // season: data.season,
-        clickEvent: () => console.log("Hello"),
+        name: competition.name,
+        league: competition.abbrev,
+        country: competition.type,
+        teams: competition.country,
+        clickEvent: () => {
+          console.log(competition);
+          history.push({
+            pathname: `/matches/${competition?.name}`,
+            state: competition,
+          });
+        },
       };
     }),
   };

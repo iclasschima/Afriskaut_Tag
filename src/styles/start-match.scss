@@ -1,261 +1,261 @@
 .start-match {
-    p {
-        font-size: 12px;
-    }
+  p {
+    font-size: 13px;
+  }
 
+  .timeline,
+  .events {
+    border: 2px solid #eee;
+    box-shadow: 0 0 3px 0 rgba(183, 192, 206, 0.2);
+    border-radius: 4px;
+    padding-bottom: 1rem;
+  }
 
-    .timeline,
-    .events {
-        border: 2px solid #eee;
-        box-shadow: 0 0 3px 0 rgba(183, 192, 206, .2);
-        border-radius: 4px;
-        padding-bottom: 1rem;
-    }
+  .timeline {
+    padding: 0;
 
-    .timeline {
-        padding: 0;
+    td {
+      font-size: 12px !important;
 
-        td {
-            font-size: 12px !important;
+      i {
+        cursor: pointer;
 
-            i {
-                cursor: pointer;
-
-                font-size: 14px;
-
-                &:hover {
-                    color: #2B52BA;
-                }
-
-                &.mdi-trash-can {
-                    margin-left: 14px;
-                }
-            }
-        }
-
-        th {
-            font-size: 12px !important;
-        }
-
-        tr {
-            &:hover {
-                cursor: pointer;
-            }
-        }
-    }
-
-    .events {
-
-
-        p {
-            font-size: 12px;
-            margin-top: .6rem;
-        }
-    }
-
-
-
-    img {
-        width: 100%;
-    }
-
-    ul {
-        list-style-type: none;
-
-        li {
-            font-size: 13px;
-            line-height: 26px;
-        }
-    }
-
-    h6 {
-        font-size: 15px;
-    }
-
-    .field {
-        position: relative;
-
-        img {
-            position: relative;
-        }
-
-        .field-players {
-            position: absolute;
-            top: 0;
-            width: 94%;
-
-            height: 99%;
-            z-index: 1000;
-
-            .board {
-
-                height: 100%;
-                position: relative;
-
-                span {
-                    font-size: 10px;
-                    border: 1px solid #eee;
-                    border-radius: 50%;
-                    height: 35px;
-                    width: 35px;
-                    text-align: center;
-                    color: #fff;
-                    font-weight: 600;
-                    padding: 8px 8px;
-                    position: absolute;
-                }
-
-                .home {
-                    span {
-                        background-color: #2B52BA;
-
-                        &.gk {
-                            top: 45% !important;
-                            left: 8%;
-                        }
-
-                        &.lb {
-                            top: 8%;
-                            left: 28%;
-                        }
-
-                        &.rb {
-                            bottom: 8%;
-                            left: 28%;
-                        }
-
-                        &.cb1 {
-                            top: 30%;
-                            left: 23%;
-                        }
-
-                        &.cb2 {
-                            bottom: 30%;
-                            left: 23%;
-                        }
-
-                        &.lm {
-                            top: 18%;
-                            left: 48%;
-                        }
-
-                        &.cm {
-                            bottom: 45%;
-                            left: 48%;
-                        }
-
-                        &.rm {
-                            bottom: 20%;
-                            left: 47%;
-                        }
-
-                        &.lf {
-                            top: 16%;
-                            right: 20%;
-                        }
-
-                        &.rf {
-                            bottom: 16%;
-                            right: 20%;
-                        }
-
-                        &.cf {
-                            bottom: 45%;
-                            right: 18%;
-                        }
-                    }
-                }
-
-                .away {
-                    span {
-                        background-color: red;
-
-                        &.gk {
-                            top: 45% !important;
-                            right: 8%;
-                        }
-
-                        &.lb {
-                            bottom: 8%;
-                            right: 28%;
-                        }
-
-                        &.rb {
-                            top: 8%;
-                            right: 28%;
-                        }
-
-                        &.cb1 {
-                            top: 30%;
-                            right: 23%;
-                        }
-
-                        &.cb2 {
-                            bottom: 30%;
-                            right: 23%;
-                        }
-
-                        &.lm {
-                            bottom: 18%;
-                            right: 48%;
-                        }
-
-                        &.cm {
-                            bottom: 45%;
-                            right: 48%;
-                        }
-
-                        &.rm {
-                            top: 18%;
-                            right: 48%;
-                        }
-
-                        &.lf {
-                            bottom: 18%;
-                            left: 20%;
-                        }
-
-                        &.rf {
-                            top: 18%;
-                            left: 20%;
-                        }
-
-                        &.cf {
-                            bottom: 45%;
-                            left: 20%;
-                        }
-                    }
-                }
-
-            }
-        }
-    }
-
-
-
-    .players {
-        cursor: pointer !important;
-        width: 100%;
-        font-size: 13px;
+        font-size: 14px;
 
         &:hover {
-            color: #2B52BA;
+          color: #2b52ba;
         }
+
+        &.mdi-trash-can {
+          margin-left: 14px;
+        }
+      }
+    }
+
+    th {
+      font-size: 12px !important;
+    }
+
+    tr {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .events {
+    p {
+      font-size: 12px;
+      margin-top: 0.6rem;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+
+  ul {
+    list-style-type: none;
+
+    li {
+      font-size: 13px;
+      line-height: 26px;
+    }
+  }
+
+  h6 {
+    font-size: 15px;
+  }
+
+  .field {
+    position: relative;
+
+    img {
+      position: relative;
+    }
+
+    .field-players {
+      position: absolute;
+      top: 0;
+      width: 94%;
+
+      height: 99%;
+      z-index: 1000;
+
+      .board {
+        height: 100%;
+        position: relative;
 
         span {
-            display: inline-block;
-            width: 15%;
-            text-align: center;
+          font-size: 10px;
+          border: 1px solid #eee;
+          border-radius: 50%;
+          height: 35px;
+          width: 35px;
+          text-align: center;
+          color: #fff;
+          font-weight: 600;
+          padding: 8px 8px;
+          position: absolute;
         }
 
-        &.away {
-            color: red;
+        .home {
+          span {
+            background-color: #2b52ba;
+
+            &.gk {
+              top: 45% !important;
+              left: 8%;
+            }
+
+            &.lb {
+              top: 8%;
+              left: 28%;
+            }
+
+            &.rb {
+              bottom: 8%;
+              left: 28%;
+            }
+
+            &.cb1 {
+              top: 30%;
+              left: 23%;
+            }
+
+            &.cb2 {
+              bottom: 30%;
+              left: 23%;
+            }
+
+            &.lm {
+              top: 18%;
+              left: 48%;
+            }
+
+            &.cm {
+              bottom: 45%;
+              left: 48%;
+            }
+
+            &.rm {
+              bottom: 20%;
+              left: 47%;
+            }
+
+            &.lf {
+              top: 16%;
+              right: 20%;
+            }
+
+            &.rf {
+              bottom: 16%;
+              right: 20%;
+            }
+
+            &.cf {
+              bottom: 45%;
+              right: 18%;
+            }
+          }
         }
+
+        .away {
+          span {
+            background-color: red;
+
+            &.gk {
+              top: 45% !important;
+              right: 8%;
+            }
+
+            &.lb {
+              bottom: 8%;
+              right: 28%;
+            }
+
+            &.rb {
+              top: 8%;
+              right: 28%;
+            }
+
+            &.cb1 {
+              top: 30%;
+              right: 23%;
+            }
+
+            &.cb2 {
+              bottom: 30%;
+              right: 23%;
+            }
+
+            &.lm {
+              bottom: 18%;
+              right: 48%;
+            }
+
+            &.cm {
+              bottom: 45%;
+              right: 48%;
+            }
+
+            &.rm {
+              top: 18%;
+              right: 48%;
+            }
+
+            &.lf {
+              bottom: 18%;
+              left: 20%;
+            }
+
+            &.rf {
+              top: 18%;
+              left: 20%;
+            }
+
+            &.cf {
+              bottom: 45%;
+              left: 20%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .players {
+    cursor: pointer !important;
+    width: 100%;
+    font-size: 13px;
+
+    &:hover {
+      color: #2b52ba;
     }
 
+    span {
+      display: inline-block;
+      width: 15%;
+      text-align: center;
+    }
+
+    &.away {
+      color: red;
+    }
+  }
+
+  .MuiChip-root {
+    margin-right: 7px;
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+
+  i {
     .MuiChip-root {
-        margin-right: 7px;
-        font-size: 11px;
-        margin-bottom: 10px;
+      font-size: 13px;
+      height: 25px;
+      font-weight: 600;
+      margin: 2px;
     }
+  }
 }

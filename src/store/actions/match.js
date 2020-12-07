@@ -6,10 +6,16 @@ const addMatch = ({ data, history }) => ({
   history,
 });
 
-const fetchMatches = () => ({
+const fetchMatches = (id) => ({
   type: MATCH.FETCH_MATCHES,
+  payload: id
+})
+
+const fetchMatchesSuccess = (data) => ({
+  type: MATCH.FETCH_MATCHES_SUCCESS,
+  payload: data
 })
 
 
 
-export { addMatch, fetchMatches };
+export { addMatch, fetchMatches, fetchMatchesSuccess };

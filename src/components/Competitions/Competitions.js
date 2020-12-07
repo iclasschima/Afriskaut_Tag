@@ -35,7 +35,6 @@ export default function Teams() {
         </div>
       </div>
       <div className=" inner-content-wrapper py-4 px-3">
-        {console.log(competitions)}
         <Table competitions={competitions || []} />
       </div>
     </div>

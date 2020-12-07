@@ -7,7 +7,7 @@ import { fetchTeam } from "../../store/actions/team";
 
 import { addMatch } from "../../store/actions/match";
 
-export default function Add(props) {
+export default function AddMatch(props) {
   const [data, setData] = useState({});
   const { competitions } = useSelector((state) => state.competition);
   const { teams } = useSelector((state) => state.team);
@@ -171,8 +171,8 @@ export default function Add(props) {
             <button
               className="btn primary-btn mt-2"
               onClick={handleSubmit}
-              data-toggle="modal"
-              data-target="#add_match"
+              // data-toggle="modal"
+              // data-target="#add_match"
             >
               Add Match
             </button>
