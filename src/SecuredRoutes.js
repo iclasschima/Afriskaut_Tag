@@ -71,7 +71,7 @@ export default function SecuredRoutes(props) {
       <div className="row"></div>
 
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route path={["/", "/dashboard"]} exact component={Home} />
         <Route path="/teams" exact component={Teams} />
         <Route path="/add-team" exact component={CreateTeam} />
         <Route path="/matches" component={Matches} />

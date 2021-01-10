@@ -1,0 +1,12 @@
+form {
+  width: 25%;
+  margin: 4rem auto 0;
+  position: relative;
+
+  #show-password-icon {
+    position: absolute;
+    right: 15px;
+    bottom: 5rem;
+    cursor: pointer;
+  }
+}

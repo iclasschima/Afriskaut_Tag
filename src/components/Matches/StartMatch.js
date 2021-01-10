@@ -3,11 +3,14 @@ import "../../styles/start-match.scss";
 import Field from "../../assets/football_field.png";
 import { useLocation } from "react-router-dom";
 import players from "../../helpers/players";
-import Timer from "react-compound-timer";
+import Board from "./Board";
+import Timer from "./Timer";
 import Chip from "@material-ui/core/Chip";
 import { FiCheck } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
-import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
+import Table from "./Table";
+import { formatTime } from "../../helpers/utils";
+import Events from "./Events";
 
 export default function StartMatch() {
   const location = useLocation();
@@ -15,72 +18,43 @@ export default function StartMatch() {
 
   const [playerEvents, setPlayerEvents] = useState([]);
   const [outcome, setOutcome] = useState(false);
+  const [showTimeField, setShowTimeField] = useState(false);
+  const [time, setTime] = useState({
+    start: "00:00",
+    stop: "00:00",
+  });
 
-  const data_icons = {
-    columns: [
-      {
-        label: "#",
-        field: "sn",
-        sort: "asc",
-      },
-      {
-        label: "Player Name",
-        field: "name",
-        sort: "asc",
-      },
-      {
-        label: "Event",
-        field: "event",
-        sort: "asc",
-      },
-      {
-        label: "Type/Location",
-        field: "type",
-        sort: "asc",
-      },
-      {
-        label: "Outcome",
-        field: "outcome",
-        sort: "asc",
-      },
-      {
-        label: "Start Time",
-        field: "start",
-        sort: "asc",
-      },
-      {
-        label: "Stop Time",
-        field: "stop",
-        sort: "asc",
-      },
-      {
-        label: "Action",
-        field: "action",
-        sort: "asc",
-      },
-    ],
-    rows: playerEvents.map((data, index) => {
-      return {
-        id: index + 1,
-        name: data.name,
-        event: data.event,
-        type: data.type,
-        outcome: data.outcome,
-        start: data.start_time,
-        stop: data.stop_time,
-        action: [
-          <i className="mdi mdi-pen text-primary" />,
-          <i className="mdi mdi-trash-can text-danger" />,
-        ],
-      };
-    }),
+  const [timer, setTimer] = useState(0);
+
+  const [editEventObject, setEditEventObject] = useState({
+    status: false,
+    index: 0,
+  });
+
+  const addTime = () => {
+    if (editEventObject.status === true) {
+      playerEvents[editEventObject.index].start_time = formatTime(timer);
+      playerEvents[editEventObject.index].stop_time = formatTime(timer + 2);
+    } else {
+      playerEvents[playerEvents.length - 1].start_time = formatTime(timer);
+      playerEvents[playerEvents.length - 1].stop_time = formatTime(timer + 2);
+    }
+
+    setPlayerEvents([...playerEvents]);
+    setShowTimeField(false);
+    setEditEventObject({ ...editEventObject, status: false });
   };
 
+  useEffect(() => {
+    console.log(playerEvents);
+  }, [playerEvents]);
+
   const addEvent = (player) => {
+    setEditEventObject({ ...editEventObject, status: false });
     if (playerEvents.length === 0) {
       setPlayerEvents([
         {
-          id: player.number,
+          id: player._id,
           name: player.name,
           event: "",
           type: "",
@@ -91,7 +65,11 @@ export default function StartMatch() {
       ]);
     } else if (
       playerEvents.length &&
-      playerEvents[playerEvents.length - 1].event !== ""
+      playerEvents[playerEvents.length - 1].event !== "" &&
+      playerEvents[playerEvents.length - 1].type !== "" &&
+      playerEvents[playerEvents.length - 1].outcome !== "" &&
+      playerEvents[playerEvents.length - 1].start_time !== "" &&
+      playerEvents[playerEvents.length - 1].stop_time !== ""
     ) {
       setPlayerEvents([
         ...playerEvents,
@@ -108,16 +86,47 @@ export default function StartMatch() {
     }
   };
 
-  const addAction = ({ event, type }) => {
-    playerEvents[playerEvents.length - 1].event = event;
-    playerEvents[playerEvents.length - 1].type = type;
+  const handleDelete = (index) => {
+    playerEvents.splice(index, 1);
     setPlayerEvents([...playerEvents]);
   };
 
+  const addAction = ({ event, type }) => {
+    if (playerEvents.length === 0) return;
+
+    if (editEventObject.status === true) {
+      playerEvents[editEventObject.index].event = event;
+      playerEvents[editEventObject.index].type = type;
+    } else {
+      playerEvents[playerEvents.length - 1].event = event;
+      playerEvents[playerEvents.length - 1].type = type;
+    }
+
+    setPlayerEvents([...playerEvents]);
+    setOutcome(true);
+  };
+
   const addOutcome = (outcomeValue) => {
-    playerEvents[playerEvents.length - 1].outcome = outcomeValue;
+    if (playerEvents.length === 0) return;
+
+    if (editEventObject.status === true) {
+      playerEvents[editEventObject.index].outcome = outcomeValue;
+    } else {
+      playerEvents[playerEvents.length - 1].outcome = outcomeValue;
+    }
+
     setPlayerEvents([...playerEvents]);
     setOutcome(false);
+    addTime();
+  };
+
+  const cancelEdit = () => {
+    setShowTimeField(false);
+    setOutcome(false);
+    setEditEventObject({
+      ...editEventObject,
+      status: false,
+    });
   };
 
   useEffect(() => {
@@ -142,49 +151,7 @@ export default function StartMatch() {
           </h6>
         </div>
         <div className="col-4 text-center">
-          <p className="text-muted">
-            <i className="mdi mdi-timer-outline mr-2" />
-            Timer
-          </p>
-          {/* <Timer
-            formatValue={(value) => `${value < 10 ? `0${value}` : value}`}
-            // initialTime={timer}
-            startImmediately={false}
-            checkpoints={[
-              {
-                time: 100 * 60,
-                callback: (time) => console.log(time),
-              },
-            ]}
-          >
-            {({ start, resume, pause, stop, reset, getTime }) => (
-              <React.Fragment>
-                <h6>
-                  <Timer.Minutes /> {": "}
-                  <Timer.Seconds />
-                </h6>
-
-                <span
-                  onClick={start}
-                  className="btn py-1 px-2 primary-btn mr-3"
-                >
-                  <i className="mdi mdi-play" />
-                </span>
-                <span
-                  onClick={() => {
-                    // setTimer(getTime());
-                    pause();
-                  }}
-                  className="btn py-1 px-2 primary-btn mr-3"
-                >
-                  <i className="mdi mdi-pause" />
-                </span>
-                <span onClick={reset} className="btn py-1 px-2 primary-btn">
-                  <i className="mdi mdi-restart" />
-                </span>
-              </React.Fragment>
-            )}
-          </Timer> */}
+          <Timer timer={timer} setTimer={setTimer} />
         </div>
         <div className="col-12 mt-5 row px-5">
           <div className="col-lg-2">
@@ -195,7 +162,11 @@ export default function StartMatch() {
             <p className="mb-1 mt-3 text-muted">Starting line-up</p>
             <ul>
               {homePlayers.first.slice(0, 10).map((player) => (
-                <li className="players" onClick={() => addEvent(player)}>
+                <li
+                  className="players"
+                  key={player.id}
+                  onClick={() => addEvent(player)}
+                >
                   <span>{player.number}</span> {player.name}
                 </li>
               ))}
@@ -203,7 +174,7 @@ export default function StartMatch() {
             <p className="mb-1 mt-2 text-muted">Substitutions</p>
             <ul>
               {homePlayers.second.slice(0, 5).map((player) => (
-                <li className="players">
+                <li className="players" key={player.id}>
                   <span>{player.number}</span> {player.name}
                 </li>
               ))}
@@ -218,39 +189,10 @@ export default function StartMatch() {
                   <div className="field-players">
                     <div className="board">
                       <div className="home">
-                        <span className="btn gk">
-                          {homePlayers?.first[0]?.number}
-                        </span>
-                        <span className="btn lb">
-                          {homePlayers?.first[1]?.number}
-                        </span>
-                        <span className="btn cb1">
-                          {homePlayers?.first[2]?.number}
-                        </span>
-                        <span className="btn cb2">
-                          {homePlayers?.first[3]?.number}
-                        </span>
-                        <span className="btn rb">
-                          {homePlayers?.first[4]?.number}
-                        </span>
-                        <span className="btn lm">
-                          {homePlayers?.first[5]?.number}
-                        </span>
-                        <span className="btn cm">
-                          {homePlayers?.first[6]?.number}
-                        </span>
-                        <span className="btn rm">
-                          {homePlayers?.first[7]?.number}
-                        </span>
-                        <span className="btn lf">
-                          {homePlayers?.first[8]?.number}
-                        </span>
-                        <span className="btn rf">
-                          {homePlayers?.first[9]?.number}
-                        </span>
-                        <span className="btn cf">
-                          {homePlayers?.first[10]?.number}
-                        </span>
+                        <Board
+                          players={homePlayers.first}
+                          addEvent={addEvent}
+                        />
                       </div>
                     </div>
                   </div>
@@ -261,39 +203,10 @@ export default function StartMatch() {
                   <div className="field-players">
                     <div className="board">
                       <div className="away">
-                        <span className="btn gk">
-                          {homePlayers?.second[0]?.number}
-                        </span>
-                        <span className="btn lb">
-                          {homePlayers?.second[1]?.number}
-                        </span>
-                        <span className="btn cb1">
-                          {homePlayers?.second[2]?.number}
-                        </span>
-                        <span className="btn cb2">
-                          {homePlayers?.second[3]?.number}
-                        </span>
-                        <span className="btn rb">
-                          {homePlayers?.second[4]?.number}
-                        </span>
-                        <span className="btn lm">
-                          {homePlayers?.second[5]?.number}
-                        </span>
-                        <span className="btn cm">
-                          {homePlayers?.second[6]?.number}
-                        </span>
-                        <span className="btn rm">
-                          {homePlayers?.second[7]?.number}
-                        </span>
-                        <span className="btn lf">
-                          {homePlayers?.second[8]?.number}
-                        </span>
-                        <span className="btn rf">
-                          {homePlayers?.second[9]?.number}
-                        </span>
-                        <span className="btn cf">
-                          {homePlayers?.second[10]?.number}
-                        </span>
+                        <Board
+                          players={homePlayers.second}
+                          addEvent={addEvent}
+                        />
                       </div>
                     </div>
                   </div>
@@ -303,7 +216,15 @@ export default function StartMatch() {
               <div className="mt-4">
                 <h6 className="mb-1">
                   <i className="mdi mdi-shoe-print mdi-18px mr-2" />
-                  Events
+                  Events{" "}
+                  {editEventObject.status && (
+                    <small
+                      className="text-primary ml-1 pointer"
+                      onClick={() => cancelEdit()}
+                    >
+                      cancel editing
+                    </small>
+                  )}
                   {outcome && (
                     <i className="button-group ml-2">
                       <Chip
@@ -320,91 +241,34 @@ export default function StartMatch() {
                       />
                     </i>
                   )}
+                  {showTimeField && (
+                    <>
+                      <input
+                        className="input-time-field"
+                        placeholder=" start time ( 23:10 )"
+                        onChange={(e) =>
+                          setTime({ ...time, start: e.target.value })
+                        }
+                      />
+                      <input
+                        className="input-time-field"
+                        placeholder="stop time ( 23:11 )"
+                        onChange={(e) =>
+                          setTime({ ...time, stop: e.target.value })
+                        }
+                      />
+                      <button
+                        className="btn btn-sm btn-primary ml-1"
+                        onClick={(e) => addTime(e)}
+                      >
+                        Submit
+                      </button>
+                    </>
+                  )}
                 </h6>
+
                 <div className="events mt-2 px-2 pt-2">
-                  <div className="row mb-3">
-                    <div className="pl-4">
-                      <p className="mb-1">Goal</p>
-                      <Chip label="Header" clickable />
-                      <Chip label="Inside Box" clickable />
-                      <Chip label="Outside Box" clickable />
-                    </div>
-
-                    <div className="pl-3">
-                      <p className="mb-1">Pass</p>
-
-                      <Chip
-                        label="Long"
-                        clickable
-                        onClick={() => {
-                          setOutcome(true);
-                          addAction({
-                            event: "pass",
-                            type: "long",
-                          });
-                        }}
-                      />
-                      <Chip
-                        label="Short"
-                        clickable
-                        onClick={() => addAction("short-pass")}
-                      />
-                      <Chip
-                        label="Linebreak"
-                        clickable
-                        onClick={() => addAction("line-break")}
-                      />
-                    </div>
-                    <div className="pl-3">
-                      <p className="mb-1">Saves</p>
-                      <Chip label="Inside box" clickable />
-                      <Chip label="Outside box" clickable />
-                      <Chip label="1 vs 1" clickable />
-                    </div>
-                    <div className="pl-4">
-                      <p className="mb-1">Shot</p>
-                      <Chip label="Long-range" clickable />
-                      <Chip label="Short-range" clickable />
-                    </div>
-
-                    <div className="pl-4">
-                      <p className="mb-1">Duel</p>
-                      <Chip label="Aerial" clickable />
-                      <Chip label="Ground" clickable />
-                    </div>
-                    <div className="pl-4">
-                      <p className="mb-1">Dribble</p>
-                      <Chip label="Nutmeg" clickable />
-                      <Chip label="Skill move" clickable />
-                    </div>
-                    <div className="pl-4">
-                      <p className="mb-1">Cards</p>
-                      <Chip label="Dessent" clickable />
-                      <Chip label="Foul" clickable />
-                    </div>
-
-                    <div className="pl-4">
-                      <p className="mb-1">Ball Progression</p>
-                      <Chip label="Own Half" clickable />
-                      <Chip label="Opponent Half" clickable />
-                    </div>
-
-                    <div className="pl-4">
-                      <p className="mb-1">Clearance</p>
-                      <Chip label="Goal line" clickable />
-                      <Chip label="Under Pressure" clickable />
-                    </div>
-
-                    <div className="pl-3">
-                      <p className="mb-1">Others</p>
-                      <Chip label="Assist" clickable />
-                      <Chip label="Penalty" clickable />
-                      <Chip label="Freekick" clickable />
-                      <Chip label="Tackle" clickable />
-                      <Chip label="Block" clickable />
-                      <Chip label="Cross" clickable />
-                    </div>
-                  </div>
+                  <Events addAction={addAction} />
                 </div>
               </div>
               <div className="mt-4">
@@ -412,12 +276,14 @@ export default function StartMatch() {
                   <i className="mdi mdi-timeline-outline mdi-18px mr-2" />
                   Timeline
                 </h6>
+
                 <div className="timeline mt-2">
                   <div className="header">
-                    <MDBTable hover fixed scrollY>
-                      <MDBTableHead columns={data_icons.columns} />
-                      <MDBTableBody rows={data_icons.rows} />
-                    </MDBTable>
+                    <Table
+                      playerEvents={playerEvents}
+                      handleDelete={handleDelete}
+                      setEditEventObject={setEditEventObject}
+                    />
                   </div>
                 </div>
               </div>
@@ -431,7 +297,11 @@ export default function StartMatch() {
             <p className="mb-1 mt-3 text-muted">Starting line-up</p>
             <ul>
               {homePlayers.first.slice(0, 10).map((player) => (
-                <li className="players">
+                <li
+                  className="players"
+                  key={player.id}
+                  onClick={() => addEvent(player)}
+                >
                   {player.name} <span>{player.number}</span>
                 </li>
               ))}

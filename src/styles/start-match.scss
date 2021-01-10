@@ -259,3 +259,30 @@
     }
   }
 }
+
+.btn-primary {
+  background-color: #2b52ba;
+}
+
+.input-time-field {
+  height: 2rem;
+  font-size: 12.5px;
+  width: 8rem;
+  border-radius: 3px;
+  padding: 3px;
+  margin-left: 0.6rem;
+  border-width: 1.4px !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.timeline-header {
+  position: relative;
+
+  button {
+    position: absolute;
+    right: 10px;
+  }
+}

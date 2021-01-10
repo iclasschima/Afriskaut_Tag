@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
-import PlayedCard from "./PlayedCard";
+// import PlayedCard from "./PlayedCard";
 import "../../styles/matches.scss";
 // import matches from "../../helpers/matches";
 import { useHistory, useLocation } from "react-router-dom";
@@ -17,12 +17,11 @@ export default function Matches() {
   console.log(matches);
 
   useEffect(() => {
-    console.log(location);
     if (!location?.state) {
       history.push("/competitions");
     }
     dispatch(fetchMatches(location?.state?.season[0]._id));
-  }, []);
+  });
 
   return (
     <div className="container-fluid matches">

@@ -6,6 +6,8 @@ export default function Header() {
   const history = useHistory();
   const location = useLocation();
 
+  const isLoggedIn = true
+
   const handleClick = (e, page) => {
     e.preventDefault();
     history.push(`/${page}`);
@@ -17,7 +19,7 @@ export default function Header() {
         <a className="navbar-brand" href="/">
           Afriskaut
         </a>
-        {location.pathname !== "/login" && (
+        {isLoggedIn && (
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav ml-auto">
               <a

@@ -15,6 +15,7 @@ function* handleFetchCompetitons() {
       const result = await axios.post(api);
       return result;
     } catch (error) {
+      console.log(error)
       throw error;
     }
   };
@@ -39,6 +40,7 @@ function* handleAddCompetition({ payload, history }) {
       const result = await axios(api, { method: "post", data: payload });
       return result;
     } catch (error) {
+      console.log(error)
       throw error;
     }
   };
